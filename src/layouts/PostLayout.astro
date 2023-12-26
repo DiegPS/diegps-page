@@ -1,0 +1,10 @@
+---
+const {frontmatter} = Astro.props
+import BaseLayout from "./BaseLayout.astro"
+const cleanTitle = frontmatter.title.replace(/-/g, " ")
+---
+<BaseLayout pageTitle={cleanTitle}>
+  <h2>{frontmatter.title}</h2>
+  <p>{frontmatter.description}</p>
+  <slot/>
+</BaseLayout>

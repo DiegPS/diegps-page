@@ -2,7 +2,7 @@
 
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,3 +14,43 @@
 		<h1>Astro</h1>
 	</body>
 </html>
+
+<style is:global>
+:root{
+	--background-dark: #0B0D13;
+	--text-dark: #F1ECCE;
+	--accent-color: #F21B3F;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+body {
+	max-width: 1200px;
+	margin: 0 auto;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+</style>

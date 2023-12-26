@@ -1,57 +1,38 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro'
+const pageTitle = 'Home'
 ---
+<BaseLayout pageTitle={pageTitle}>
+	<section>
+		<h1>Diego Pahua Silvan</h1>
+		<p>Frontend Developer</p>
+	</section>
+</BaseLayout>
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 80vh;
+	}
 
-<style is:global>
-:root{
-	--background-dark: #0B0D13;
-	--text-dark: #F1ECCE;
-	--accent-color: #F21B3F;
-}
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
+	h1 {
+		text-align: center;
+		font-size: 3rem;
+	}
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
+	p {
+		font-size: 1.5rem;
+	}
 
-body {
-	max-width: 1200px;
-	margin: 0 auto;
-  background-color: var(--background-dark);
-  color: var(--text-dark);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-}
+	button {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-color: #000;
+	}
 </style>
+
+

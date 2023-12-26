@@ -1,0 +1,15 @@
+---
+const {post} = Astro.props
+---
+<article>
+    <a href={`blog/${post.slug}`}>{post.data.title}</a>
+</article>
+
+<style>
+    article {
+        margin: 0 2rem 1rem 2rem;
+        background-color: var(--secondary-background-color);
+        padding: 1rem;
+        border-radius: 10px;
+    }
+</style>

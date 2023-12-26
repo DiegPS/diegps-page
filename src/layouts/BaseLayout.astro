@@ -1,0 +1,76 @@
+---
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.astro';
+import { ViewTransitions } from 'astro:transitions';
+const {pageTitle} = Astro.props
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin />
+		<title>{pageTitle}</title>
+		<ViewTransitions/>
+	</head>
+	<body>
+		<Navigation/>
+			<slot/>
+		<Footer/>
+	</body>
+</html>
+<style is:global>
+	:root{
+		--background-dark: #0B0D13;
+		--text-dark: #F1ECCE;
+		--accent-color: #F21B3F;
+	}
+	*, *::before, *::after {
+	  box-sizing: border-box;
+	}
+	* {
+	  margin: 0;
+	  padding: 0;
+	}
+	a {
+	  color: var(--accent-color);
+	  text-decoration: none;
+	}
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+		font-weight: 400;
+		font-style: normal;
+	}
+	
+	@font-face {
+		font-family: 'Montserrat';
+		src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+		font-weight: 700;
+		font-style: normal;
+	}
+	
+	body {
+		max-width: 1200px;
+		margin: 0 auto;
+	  background-color: var(--background-dark);
+	  color: var(--text-dark);
+	  font-family: 'Montserrat', system-ui, sans-serif;
+	  letter-spacing: 1px;
+	  font-size: 16px;
+	}
+	h1{
+	  color: var(--accent-color);
+	  font-size: 3rem;
+	}
+	main {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  height: 100vh;
+	}
+	</style>

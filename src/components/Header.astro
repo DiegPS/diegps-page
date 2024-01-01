@@ -2,6 +2,8 @@
 import SocialAnchor from "./SocialAnchor.astro";
 import LinkedIn from "./icons/LinkedIn.astro";
 import Github from "./icons/Github.astro";
+import Email from "./icons/Email.astro";
+import Resume from "./icons/Resume.astro";
 ---
 
 <section>
@@ -18,31 +20,35 @@ import Github from "./icons/Github.astro";
        GitHub
     </SocialAnchor>
     <SocialAnchor href="mailto:dpahuas@gmail.com">
-      <LinkedIn />
-       GitHub
+      <Email />
+       Email
+    </SocialAnchor>
+    <SocialAnchor href="/resume.pdf">
+      <Resume />
+       Descargar CV
     </SocialAnchor>
   </div>
+  <style>
+    .social-media {
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  </style>
 </section>
-<style>
-  .social-media {
-    padding: 1rem;
-    display: flex;
-    gap: 1rem;
-  }
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 3rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-  }
-</style>

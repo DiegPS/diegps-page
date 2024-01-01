@@ -1,0 +1,19 @@
+<a {...Astro.props} target="_blank" rel="noopener noreferrer">
+  <slot />
+</a>
+
+<style>
+  a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: rgba(240, 255, 255, 0.222);
+  }
+  a:hover {
+    transform: scale(1.1);
+    color: var(--accent-color);
+    transition: transform 0.4s ease-in-out;
+  }
+</style>

@@ -4,9 +4,12 @@
 
 <nav>
     <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/blog">Blog</a>
+        </li>
     </ul>
     
 </nav>
@@ -17,17 +20,15 @@ nav{
 }
 ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    letter-spacing: 1.2px;
+    display: flex;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 a {
     text-decoration: none;
-    font-weight: 700;
 }
 a:hover {
-    text-decoration: underline;
-    color: #670cd7;
+    color: var(--accent-color);
 }
 </style>

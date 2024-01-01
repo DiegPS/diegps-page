@@ -25,7 +25,7 @@ const {pageTitle} = Astro.props
 <style is:global>
 	:root{
 		--background-dark: #0B0D13;
-		--text-dark: #F1ECCE;
+		--text-dark: #F2F7F2;
 		--accent-color: #F21B3F;
 	}
 	*, *::before, *::after {
@@ -35,10 +35,7 @@ const {pageTitle} = Astro.props
 	  margin: 0;
 	  padding: 0;
 	}
-	a {
-	  color: var(--accent-color);
-	  text-decoration: none;
-	}
+
 	@font-face {
 		font-family: 'Montserrat';
 		src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
@@ -66,11 +63,16 @@ const {pageTitle} = Astro.props
 	  color: var(--accent-color);
 	  font-size: 3rem;
 	}
-	main {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  justify-content: center;
-	  height: 100vh;
+	a{
+		letter-spacing: 1.2px;
+		text-decoration: none;
 	}
+	a {
+		color: var(--text-dark);
+	  text-decoration: none;
+	}
+	a:visited {
+	  color: var(--text-dark);
+	}
+	
 	</style>

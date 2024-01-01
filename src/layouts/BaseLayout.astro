@@ -60,8 +60,10 @@ const { pageTitle } = Astro.props;
       }
 
       prefers-color-scheme: light {
-        background-color: var(--text-color);
-        color: var(--background-color);
+        body {
+          background-color: var(--text-color);
+          color: var(--background-color);
+        }
       }
 
       @font-face {

@@ -2,20 +2,36 @@
 import SocialSection from "../components/SocialSection.astro";
 ---
 
-<section>
-  <h1>Diego Pahua Silvan</h1>
-  <h2>Full Stack Developer</h2>
-  <p class="location">🇲🇽 Tabasco, México</p>
-  <SocialSection />
-</section>
+<div>
+  <img
+    src="/picture.webp"
+    alt="foto de frente de desarrollador web full stack creador de el este portafolio"
+  />
+  <section>
+    <h1>Diego Pahua Silvan</h1>
+    <h2>Full Stack Developer</h2>
+    <p class="location">🇲🇽 Tabasco, México</p>
+    <SocialSection />
+  </section>
+</div>
 
 <style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+  }
+  img {
+    width: 23rem;
+    height: 23rem;
+    border-radius: 50%;
+  }
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
   }
 
   h2 {

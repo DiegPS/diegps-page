@@ -3,22 +3,14 @@
 ---
 
 <nav>
-  <ul>
-    <li>
-      <a href="/">Home</a>
-    </li>
-    <li>
-      <a href="/blog">Blog</a>
-    </li>
-  </ul>
+  <a href="/">Home</a>
+  <a href="/blog">Blog</a>
 </nav>
 <style>
   nav {
-    padding: 1rem;
-  }
-  ul {
     display: flex;
     justify-content: space-evenly;
+    padding: 1rem;
     letter-spacing: 1.2px;
     display: flex;
     list-style: none;
@@ -27,6 +19,8 @@
     text-decoration: none;
   }
   a:hover {
-    color: var(--accent-color);
+    transform: scale(1.2);
+    color: var(--accent-color-tertiary);
+    transition: all 0.3s ease-in-out;
   }
 </style>

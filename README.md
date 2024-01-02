@@ -6,6 +6,6 @@
 
 - Mint Cream #F2F7F2
 
-- Butterscotch #EEA243
+- Amber #FFBD00
 
-- Sea Green #058C42
+- Mint #17B890

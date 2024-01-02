@@ -1,0 +1,36 @@
+---
+import SocialAnchor from "./SocialAnchor.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import Github from "./icons/Github.astro";
+import Email from "./icons/Email.astro";
+import Resume from "./icons/Resume.astro";
+---
+
+<div class="social-media">
+  <SocialAnchor href="https://www.linkedin.com/in/DiegPS">
+    <LinkedIn />
+     LinkedIn
+  </SocialAnchor>
+  <SocialAnchor href="https://www.github.com/DiegPS">
+    <Github />
+     GitHub
+  </SocialAnchor>
+  <SocialAnchor href="mailto:dpahuas@gmail.com">
+    <Email />
+     Email
+  </SocialAnchor>
+  <SocialAnchor href="/resume.pdf">
+    <Resume />
+     Descargar CV
+  </SocialAnchor>
+</div>
+
+<style>
+  .social-media {
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

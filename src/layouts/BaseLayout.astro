@@ -38,7 +38,7 @@ const { pageTitle } = Astro.props;
         --text-color: #f2f7f2;
         --accent-color: #f21b3f;
         --accent-color-secondary: #eea243;
-        --accent-color-tertiary: #17B890;
+        --accent-color-tertiary: #17b890;
       }
       *,
       *::before,
@@ -75,10 +75,6 @@ const { pageTitle } = Astro.props;
         font-display: swap;
       }
 
-      h1 {
-        color: var(--accent-color);
-        font-size: 3rem;
-      }
       a {
         letter-spacing: 1.2px;
         text-decoration: none;
@@ -89,6 +85,15 @@ const { pageTitle } = Astro.props;
       }
       a:visited {
         color: var(--text-dark);
+      }
+
+      pre {
+        background-color: #1e1e1e;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 0rem 0.2rem;
       }
     </style>
   </body>

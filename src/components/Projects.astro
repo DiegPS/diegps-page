@@ -1,9 +1,9 @@
 ---
-
+import Code from "./icons/Code.astro";
 ---
 
 <section>
-  <h2>Proyectos</h2>
+  <h2><Code class="icon-projects" /> Proyectos</h2>
   <article>
     <h3>Proyecto 1</h3>
     <p>
@@ -18,10 +18,21 @@
 </section>
 
 <style>
+  .icon-projects {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     font-size: 2rem;
     color: var(--accent-color);
-    margin-bottom: 1rem;
   }
   h3 {
     font-size: 1.5rem;

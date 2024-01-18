@@ -29,16 +29,46 @@ const { pageTitle } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
+    <div class="absolute-element"></div>
+    <div class="absolute-element-left"></div>
     <Navigation />
     <slot />
     <Footer />
     <style is:global>
+      .absolute-element {
+        position: fixed;
+        z-index: -1;
+        bottom: 0;
+        right: -10%;
+        top: -10%;
+        height: 500px;
+        width: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle farthest-side,
+          rgba(0, 200, 255, 0.15),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      .absolute-element-left {
+        position: fixed;
+        z-index: -1;
+        bottom: 0%;
+        left: -10%;
+        height: 500px;
+        width: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle farthest-side,
+          rgba(0, 255, 242, 0.15),
+          rgba(255, 255, 255, 0)
+        );
+      }
       :root {
         --background-color: #0b0d13;
         --text-color: #f2f7f2;
-        --accent-color: #f21b3f;
-        --accent-color-secondary: #eea243;
-        --accent-color-tertiary: #17b890;
+        --accent-color: #17b890;
+        --accent-color-secondary: #f21b3f;
       }
       *,
       *::before,

@@ -35,6 +35,11 @@ const { pageTitle } = Astro.props;
     <slot />
     <Footer />
     <style is:global>
+      @media (max-width: 900px) {
+        .absolute-element {
+          display: none;
+        }
+      }
       .absolute-element {
         position: fixed;
         z-index: -1;

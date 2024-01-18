@@ -1,11 +1,42 @@
 ---
-import BlogIcon from "./icons/BlogIcon.astro";
-import HomeIcon from "./icons/HomeIcon.astro";
+
 ---
 
 <nav>
-  <a href="/"><HomeIcon />Home</a>
-  <a href="/blog"><BlogIcon />Blog</a>
+  <a href="/"
+    ><svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path
+        d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path
+        d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg
+    >Home</a
+  >
+  <a href="/blog"
+    ><svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M6 15h15"></path><path d="M21 19h-15"></path><path d="M15 11h6"
+      ></path><path d="M21 7h-6"></path><path
+        d="M9 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path><path
+        d="M3 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path></svg
+    >
+    Blog</a
+  >
 </nav>
 <style>
   nav {
@@ -15,6 +46,10 @@ import HomeIcon from "./icons/HomeIcon.astro";
     letter-spacing: 1.2px;
     display: flex;
     list-style: none;
+  }
+  a:hover > svg {
+    transition: all 0.2s ease-in-out;
+    transform: rotate(15deg);
   }
   a {
     display: flex;

@@ -2,9 +2,6 @@
 title: Instalar Java en Arch Linux
 description: aprende por fin a instalar java correctamente en arch linux
 ---
-# Instalar, configurar y probar Java en Arch Linux
-
-
 Para instalar Java en Arch Linux, puedes utilizar el gestor de paquetes pacman. Hay diferentes versiones de Java disponibles, pero en este ejemplo, instalaré OpenJDK, que es una implementación de código abierto de Java.
 
 Pasos para instalar OpenJDK en Arch Linux:

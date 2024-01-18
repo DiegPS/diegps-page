@@ -4,14 +4,14 @@ description: cambiar gestor de paquetes por defecto en angular a opciones como y
 ---
 Hoy vamos a hablar de una pequeña pero poderosa optimización para tu entorno de desarrollo Angular: la configuración de tu gestor de paquetes. En este caso, vamos a explorar cómo hacerlo con Yarn. Así que, agarra tu taza de café y vamos directo al grano.
 
-## I. Configuración Global
+### I. Configuración Global
 Si eres un amante de Yarn y quieres que Angular lo utilice como gestor de paquetes de forma predeterminada en todos tus proyectos, este primer comando es para ti:
 ```bash
 ng config -g cli.packageManager yarn
 ```
 ¡Listo! Ahora, cada vez que inicies un nuevo proyecto Angular, Yarn será tu mano derecha para la gestión de paquetes.
 
-## II. Configuración para un Proyecto Específico
+### II. Configuración para un Proyecto Específico
 Pero, ¿qué pasa si solo quieres que un proyecto en particular utilice Yarn? No hay problema. Puedes configurarlo específicamente para ese proyecto con el siguiente comando:
 
 ```bash

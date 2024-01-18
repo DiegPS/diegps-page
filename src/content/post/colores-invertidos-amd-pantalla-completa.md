@@ -3,11 +3,11 @@ title: Pantalla completa se cambian los colores en los juegos amd drivers
 description: al poner en pantalla completa se cambian los colores en los juegos amd drivers
 ---
 
-# Colores invertidos
+### Colores invertidos
 
 Al abrir juegos en modo pantalla completa o pantalla completa sin bordes: una tonalidad azulada invade la pantalla, afectando la experiencia de juego. A pesar de los esfuerzos por resolverlo, reinstalando Windows y los controladores de gráficos, el misterio persiste, afectando a una variedad de juegos.
 
-## solucion
+### solucion
 
 La raíz del inconveniente radica en las últimas dos actualizaciones de los controladores de video de AMD R7. Al abrir un juego en modo pantalla completa, se produce una alteración en los colores, manifestándose en tonos azulados. Las versiones responsables de este problema son Adrenalin 2020 Edition 20.12.1 y Adrenalin 2020 Edition 20.11.3.
 

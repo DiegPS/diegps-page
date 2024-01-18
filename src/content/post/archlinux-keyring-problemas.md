@@ -3,8 +3,6 @@ title: ArchLinux Keyring problemas de todos los dias
 description: Corregir todos esos problemas que da archlinux a cada rato con las claves
 ---
 
-# Archlinux Keyring
-
 probar a configurar reflector en el caso de que no funcione pacman-key
 
 ```bash

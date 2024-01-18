@@ -1,10 +1,11 @@
 ---
-
+import BlogIcon from "./icons/BlogIcon.astro";
+import HomeIcon from "./icons/HomeIcon.astro";
 ---
 
 <nav>
-  <a href="/">Home</a>
-  <a href="/blog">Blog</a>
+  <a href="/"><HomeIcon />Home</a>
+  <a href="/blog"><BlogIcon />Blog</a>
 </nav>
 <style>
   nav {
@@ -16,12 +17,16 @@
     list-style: none;
   }
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     text-decoration: none;
     font-size: 1.2rem;
   }
   a:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     color: var(--accent-color-secondary);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 </style>

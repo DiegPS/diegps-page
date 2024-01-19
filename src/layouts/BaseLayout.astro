@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
-import { ViewTransitions } from "astro:transitions";
 const { pageTitle } = Astro.props;
 ---
 
@@ -26,7 +25,6 @@ const { pageTitle } = Astro.props;
       crossorigin
     />
     <title>{pageTitle} - Porfolio Desarrollador Web FullStack</title>
-    <ViewTransitions />
   </head>
   <body>
     <div class="absolute-element"></div>
@@ -35,11 +33,6 @@ const { pageTitle } = Astro.props;
     <slot />
     <Footer />
     <style is:global>
-      @media (max-width: 900px) {
-        .absolute-element {
-          display: none;
-        }
-      }
       .absolute-element {
         position: fixed;
         z-index: -1;
@@ -83,6 +76,20 @@ const { pageTitle } = Astro.props;
       * {
         margin: 0;
         padding: 0;
+      }
+      h2 {
+        color: var(--accent-color);
+        margin: 0.8rem 0rem 0.8rem 0rem;
+      }
+      h3 {
+        margin: 0.7rem 0rem 0.7rem 0rem;
+        font-size: 24px;
+      }
+      p {
+        text-wrap: pretty;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 16px;
       }
       body {
         max-width: 900px;
@@ -128,10 +135,15 @@ const { pageTitle } = Astro.props;
         padding: 1rem;
         border-radius: 5px;
         overflow-x: auto;
-        margin: 0rem 0.2rem;
       }
       body {
         scroll-behavior: smooth;
+      }
+
+      @media (max-width: 900px) {
+        .absolute-element {
+          display: none;
+        }
       }
     </style>
   </body>

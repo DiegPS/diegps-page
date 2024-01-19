@@ -1,9 +1,12 @@
 ---
+import TitleHeader from "./TitleHeader.astro";
 import Code from "./icons/Code.astro";
 ---
 
 <section>
-  <h2><Code class="icon-projects" /> Proyectos</h2>
+  <TitleHeader title="Proyectos">
+    <Code class="icon-projects" />
+  </TitleHeader>
   <article>
     <h3>Proyecto 1</h3>
     <p>
@@ -22,18 +25,6 @@ import Code from "./icons/Code.astro";
     width: 2.4rem;
     height: 2.4rem;
   }
-  div {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  h2 {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 2rem;
-    color: var(--accent-color);
-  }
   h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -42,11 +33,14 @@ import Code from "./icons/Code.astro";
   section {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
   }
   article {
-    padding: 1rem;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-width: 900px) {
+    section {
+      padding: 0.6rem;
+    }
   }
 </style>

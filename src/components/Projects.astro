@@ -1,23 +1,66 @@
 ---
 import TitleHeader from "./TitleHeader.astro";
 import Code from "./icons/Code.astro";
+import Angular from "./icons/Angular.astro";
+import ProjectCard from "./ProjectCard.astro";
+import NextJS from "./icons/NextJS.astro";
+import React from "./icons/React.astro";
+import TypeScript from "./icons/TypeScript.astro";
+import JavaScript from "./icons/JavaScript.astro";
+
+const TAGS = {
+  NEXTJS: {
+    name: "Next.js",
+    icon: NextJS,
+  },
+  ANGULAR: {
+    name: "Angular",
+    icon: Angular,
+  },
+  REACT: {
+    name: "React",
+    icon: React,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    icon: TypeScript,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    icon: JavaScript,
+  },
+};
+
+const PROJECTS = [
+  {
+    image: "/images/projects/nextjs.png",
+    title: "Next.js",
+    description:
+      "Next.js is a React framework that enables several features like server-side rendering, static site generation, and more.",
+    demoUrl: "https://nextjs.org/",
+    sourceUrl: "",
+    tags: [TAGS.NEXTJS, TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TYPESCRIPT],
+    imageAlt: "Next.js logo",
+  },
+];
 ---
 
 <section>
   <TitleHeader title="Proyectos">
     <Code class="icon-projects" />
-  </TitleHeader>
-  <article>
-    <h3>Proyecto 1</h3>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-      voluptatum.
-    </p>
-  </article>
-  <article>
-    <h3>Proyecto 2</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-  </article>
+  </TitleHeader>{
+    PROJECTS.map((PROJECTS) => (
+      <ProjectCard
+        tags={PROJECTS.tags}
+        image={PROJECTS.image}
+        title={PROJECTS.title}
+        description={PROJECTS.description}
+        demoUrl={PROJECTS.demoUrl}
+        sourceUrl={PROJECTS.sourceUrl}
+        imageAlt={PROJECTS.imageAlt}
+      ></ProjectCard>
+    ))
+  }
 </section>
 
 <style>
@@ -25,16 +68,8 @@ import Code from "./icons/Code.astro";
     width: 2.4rem;
     height: 2.4rem;
   }
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
 
   section {
-    display: flex;
-    flex-direction: column;
-  }
-  article {
     display: flex;
     flex-direction: column;
   }

@@ -1,0 +1,77 @@
+---
+import Github from "./icons/Github.astro";
+import Browser from "./icons/Browser.astro";
+interface Props {
+    image: string;
+    title: string;
+    description: string;
+    demoUrl: string;
+    sourceUrl: string;
+    imageAlt: string;
+    tags: { name: string; icon: (_props: Record<string, any>) => any }[];
+}
+
+const { demoUrl, description, image, imageAlt, sourceUrl, title, tags } =
+    Astro.props;
+---
+
+<article>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <img src={image} alt={imageAlt} />
+    <section>
+        {
+            tags.map((tag) => (
+                <span>
+                    <tag.icon />
+                    {tag.name}
+                </span>
+            ))
+        }
+    </section>
+    <div>
+        <slot />
+    </div>
+    <footer>
+        <a href={demoUrl}><Browser />Visitar Web</a>
+        <a href={sourceUrl}><Github />Codigo Fuente</a>
+    </footer>
+</article>
+<style>
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 1rem 0;
+    }
+    span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        background-color: var(--accent-color);
+        color: var(--background-color);
+    }
+    footer {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    footer a {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    a:hover {
+        color: var(--accent-color);
+    }
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    article {
+        display: flex;
+        flex-direction: column;
+    }
+</style>

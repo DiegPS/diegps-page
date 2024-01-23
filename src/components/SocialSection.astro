@@ -4,6 +4,8 @@ import LinkedIn from "./icons/LinkedIn.astro";
 import Github from "./icons/Github.astro";
 import Email from "./icons/Email.astro";
 import Resume from "./icons/Resume.astro";
+import ViewAnchorCurriculum from "./ViewAnchorCurriculum.astro";
+import DownloadAnchorCurriculum from "./DownloadAnchorCurriculum.astro";
 ---
 
 <div class="social-media">
@@ -19,10 +21,14 @@ import Resume from "./icons/Resume.astro";
     <Email />
      Email
   </SocialAnchor>
-  <SocialAnchor  href="/diego_pahua_silvan_full_stack_developer.pdf">
+  <ViewAnchorCurriculum  >
     <Resume />
-     Descargar CV
-  </SocialAnchor>
+    Ver CV
+  </ViewAnchorCurriculum>
+  <DownloadAnchorCurriculum  >
+    <Resume />
+    Descargar CV
+  </DownloadAnchorCurriculum>
 </div>
 
 <style>

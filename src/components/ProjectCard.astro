@@ -23,7 +23,7 @@ const { demoUrl, description, image, imageAlt, sourceUrl, title, tags } =
         {
             tags.map((tag) => (
                 <span>
-                    <tag.icon />
+                    <tag.icon strokeWidth="1"/>
                     {tag.name}
                 </span>
             ))
@@ -48,10 +48,11 @@ const { demoUrl, description, image, imageAlt, sourceUrl, title, tags } =
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.25rem 0.5rem;
+        padding: 0.25rem 0.4rem;
         border-radius: 0.25rem;
         background-color: var(--accent-color);
         color: var(--background-color);
+        font-size: 0.80rem;
     }
     footer {
         display: flex;

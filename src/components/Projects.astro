@@ -30,17 +30,31 @@ const TAGS = {
     icon: JavaScript,
   },
 };
-
-const PROJECTS = [
+interface Project {
+    image: string;
+    title: string;
+    description: string;
+    demoUrl?: string;
+    sourceUrl?: string;
+    imageAlt: string;
+    tags: { name: string; icon: (_props: Record<string, any>) => any }[];
+}
+const PROJECTS : Project[] = [
   {
-    image: "/images/projects/nextjs.png",
-    title: "Next.js",
+    image: "/images/projects/repea.webp",
+    title: "Repea",
     description:
-      "Next.js is a React framework that enables several features like server-side rendering, static site generation, and more.",
-    demoUrl: "https://nextjs.org/",
-    sourceUrl: "",
+      "La aplicación Repea permite a los usuarios crear preguntas y respuestas para reforzar el aprendizaje de cualquier tema mediante el uso de tarjetas de memoria.",
     tags: [TAGS.NEXTJS, TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TYPESCRIPT],
-    imageAlt: "Next.js logo",
+    imageAlt: "Repea aplicacion con interfaz de usuario con fondo de color morado y que muestra preguntas para reforzar el aprendizaje.",
+  },
+  {
+    image: "/images/projects/liftx.webp",
+    title: "LiftX",
+    description:
+      "LiftX es una aplicacion que permite a los usuarios llevar un registro de sus entrenamientos y progreso en el gimnasio con diferentes tipos de ejercicios inicio de sesion y registro de usuarios.",
+    tags: [TAGS.ANGULAR, TAGS.JAVASCRIPT, TAGS.TYPESCRIPT],
+    imageAlt: "LiftX es una aplicacion que permite a los usuarios llevar un registro de sus entrenamientos.",
   },
 ];
 ---

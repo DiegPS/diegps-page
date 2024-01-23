@@ -5,8 +5,8 @@ interface Props {
     image: string;
     title: string;
     description: string;
-    demoUrl: string;
-    sourceUrl: string;
+    demoUrl?: string;
+    sourceUrl?: string;
     imageAlt: string;
     tags: { name: string; icon: (_props: Record<string, any>) => any }[];
 }
@@ -32,13 +32,21 @@ const { demoUrl, description, image, imageAlt, sourceUrl, title, tags } =
     <div>
         <slot />
     </div>
-    <footer>
+    {demoUrl && sourceUrl &&     <footer>
         <a href={demoUrl}><Browser />Visitar Web</a>
         <a href={sourceUrl}><Github />Codigo Fuente</a>
-    </footer>
+    </footer>}
+
 </article>
 <style>
-
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.4rem;
+        margin: 1rem 0;
+        max-height: 300px;
+    }
     section {
         display: flex;
         flex-wrap: wrap;

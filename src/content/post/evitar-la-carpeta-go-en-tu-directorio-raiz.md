@@ -1,5 +1,5 @@
 ---
-tile: Personaliza tu espacio de trabajo Go cambia la ubicación del directorio
+title: Personaliza tu espacio de trabajo Go cambia la ubicación del directorio
 description: ¿Te incomoda el directorio Go por defecto en tu home? ¡No te preocupes! Aprende a personalizar su ubicación en pocos pasos. Optimiza tu flujo de trabajo y disfruta de una experiencia Go más organizada.
 ---
 

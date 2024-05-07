@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 const { pageTitle } = Astro.props;
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <html lang="es">
@@ -36,6 +37,7 @@ const { pageTitle } = Astro.props;
       content="https://raw.githubusercontent.com/DiegPS/diegps-page/main/public/og-image.webp"
     />
     <title>{pageTitle} - Porfolio Desarrollador Web FullStack</title>
+    <ViewTransitions />
   </head>
   <body>
     <div class="absolute-element"></div>

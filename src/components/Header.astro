@@ -1,5 +1,6 @@
 ---
 import SocialSection from "../components/SocialSection.astro";
+import MexicoIcon from "./icons/MexicoIcon.astro";
 ---
 
 <div>
@@ -12,12 +13,19 @@ import SocialSection from "../components/SocialSection.astro";
   <section>
     <h1>Diego Pahua Silvan</h1>
     <h2>Full Stack Developer</h2>
-    <p>🇲🇽 Tabasco, México</p>
+    <footer>
+      <MexicoIcon /><p>Tabasco, México</p>
+    </footer>
     <SocialSection />
   </section>
 </div>
 
 <style>
+  footer {
+    display: flex;
+    place-items: center;
+    gap: 1rem;
+  }
   @media (max-width: 900px) {
     div {
       flex-direction: column;
@@ -58,6 +66,5 @@ import SocialSection from "../components/SocialSection.astro";
 
   p {
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
   }
 </style>

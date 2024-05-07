@@ -4,19 +4,63 @@ import ActivityIcon from "./icons/ActivityIcon.astro";
 ---
 
 <section>
-  <TitleHeader title="Activity">
+  <TitleHeader title="Actividad">
     <ActivityIcon />
   </TitleHeader>
-  <img
-    height="200"
-    src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=2F855A&icon_color=2F855A&text_color=17b890&custom_title=Trabajado%20esta%20semana&layout=compact"
-    alt="En esta parte muestro una grafica de las tecnologias que voy empleando de forma semanal por ejemplo 1 hora de JavaScript, 2 horas de Zig o simplemente decir que ciertas tecnologias o lenguajes he usado en esa semana."
-  />
+  <aside>
+    <img
+      height="200"
+      src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=2F855A&icon_color=2F855A&text_color=17b890&custom_title=Trabajado%20esta%20semana&layout=compact"
+      alt="En esta parte muestro una grafica de las tecnologias que voy empleando de forma semanal por ejemplo 1 hora de JavaScript, 2 horas de Zig o simplemente decir que ciertas tecnologias o lenguajes he usado en esa semana."
+    />
+    <footer>
+      <h3>● Open Source</h3>
+      <div>
+        <a href="http://backgy.com" target="_blank" rel="noopener noreferrer"
+          >➜ Backgy.com</a
+        >
+        <p>
+          Backgrounds made for your website using Tailwind and CSS just copy and
+          paste ready to use
+        </p>
+        <a href="http://deploys.top" target="_blank" rel="noopener noreferrer"
+          >➜ Deploys.top</a
+        >
+        <p>
+          Plataforma para elegir en donde desplegar tu proyecto en base a las
+          tecnologias que tengas y tus necesidades especificas.
+        </p>
+        <a href="http://ontype.xyz" target="_blank" rel="noopener noreferrer"
+          >➜ OnType.xyz</a
+        >
+        <p>
+          SpeedTyper para programadores, con progreso, competencias entre
+          programadores para mejorar en mecanografia.
+        </p>
+      </div>
+    </footer>
+  </aside>
 </section>
 <style>
+  aside {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  footer {
+    margin-left: 1rem;
+  }
   img {
     width: 100%;
     height: 100%;
-    margin-top: 1rem;
+  }
+  a {
+    display: block;
+    font-size: 1.1rem;
+  }
+  a:hover {
+    color: var(--accent-color);
+  }
+  h3 {
+    margin: 0px 0px 0px 0px;
   }
 </style>

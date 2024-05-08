@@ -46,6 +46,12 @@ import ActivityIcon from "./icons/ActivityIcon.astro";
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
+  @media (max-width: 900px) {
+    aside {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
   footer {
     margin-left: 1rem;
   }

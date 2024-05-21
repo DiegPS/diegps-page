@@ -11,7 +11,7 @@ Astro siempre me ha parecido un framework increible con muchisimas herramientas 
 
 Queria generar un TOC (Table of Contents) para mis posts en MDX, y queria hacerlo de una manera que fuera facil de mantener y de usar, y que no me tomara mucho tiempo, asi que pense en usar un componente de astro para hacerlo, pero ohh sorpresa, no pude hacerlo de la manera que esperaba, ya que solo `mdx` y `md` generan el TOC pero los astro components no, asi que tuve que modificar el componente para que recibiera un slot y asi poder generar el TOC.
 
-![imagen](/post/astro-component-no-toc.webp)
+![imagen](/post/astro-component-no-toc.png)
 
 ### La solucion
 

@@ -76,11 +76,28 @@ import { ViewTransitions } from "astro:transitions";
         );
       }
       :root {
-        --background-color: #fafffe;
-        --text-color: #1e211e;
+        --background-color: #0b0d13;
+        --text-color: #fafffe;
         --accent-color: #17b890;
         --accent-color-secondary: #4d7aff;
       }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --background-color: #fafffe;
+          --text-color: #1e211e;
+          --accent-color: #17b890;
+          --accent-color-secondary: #4d7aff;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background-color: #0b0d13;
+          --text-color: #fafffe;
+          --accent-color: #17b890;
+          --accent-color-secondary: #4d7aff;
+        }
+      }
+
       *,
       *::before,
       *::after {

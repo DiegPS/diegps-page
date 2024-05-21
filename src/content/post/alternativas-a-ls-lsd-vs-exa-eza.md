@@ -3,7 +3,7 @@ title: Alternativas a ls ¿Cuál elegir, LSD o EZA, el nuevo sucesor de EXA?
 description: En el vasto universo de la terminal, donde cada comando cuenta y cada segundo ahorra esfuerzos, la personalización y optimización del entorno se convierten en claves esenciales para una experiencia más eficiente y visualmente atractiva. LSD y EZA. Pero, ¿cuál de ellos se alza como la mejor opción para enriquecer nuestra interacción con la terminal?
 ---
 
-LSD: Un ls moderno en Rust
+## LSD: Un ls moderno en Rust
 
 LSD, acrónimo de LSDeluxe, emerge como una alternativa moderna y bastante fiel a la clásica herramienta ls. Destaca por su enfoque en mantener una compatibilidad y similitud notables con el comando original, enriqueciéndolo con una serie de mejoras visuales y funcionales que elevan la experiencia del usuario sin desviarse de la esencia de ls.
 
@@ -13,7 +13,7 @@ Además, LSD ya forma parte de los repositorios de Ubuntu, un logro notable dada
 
 Con funcionalidades como íconos mejorados y altamente personalizables, así como un soporte ampliado de la sintaxis de ls, LSD se alza como la alternativa que honra la tradición del comando original, llevándolo un paso adelante hacia el futuro.
 
-EZA: El Desafiante Fork de EXA
+## EZA: El Desafiante Fork de EXA
 
 Por otro lado, EZA emerge como una alternativa inspirada en EXA, un reemplazo de ls que, aunque gozó de popularidad, ha dejado de recibir mantenimiento y actualizaciones. Con un 93% de su código desarrollado en Rust, EZA comparte el espíritu moderno y eficiente de LSD, pero se distingue por seguir la estela dejada por EXA en lugar de buscar una fidelidad directa con ls.
 

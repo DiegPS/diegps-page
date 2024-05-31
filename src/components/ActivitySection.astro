@@ -8,11 +8,12 @@ import ActivityIcon from "./icons/ActivityIcon.astro";
     <ActivityIcon />
   </TitleHeader>
   <aside>
-    <img
-      height="200"
-      src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=18b890&icon_color=2F855A&text_color=434d58&custom_title=Trabajado%20esta%20semana&layout=compact"
-      alt="En esta parte muestro una grafica de las tecnologias que voy empleando de forma semanal por ejemplo 1 hora de JavaScript, 2 horas de Zig o simplemente decir que ciertas tecnologias o lenguajes he usado en esa semana."
-    />
+    <picture>
+        <source srcset="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=18b890&icon_color=2F855A&text_color=434d58&custom_title=Trabajado%20esta%20semana&layout=compact" media="(prefers-color-scheme: light)" />
+      <img src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=0b0d14&title_color=18b890&icon_color=2F855A&text_color=fafffe&custom_title=Trabajado%20esta%20semana&layout=compact"       alt="En esta parte muestro una grafica de las tecnologias que voy empleando de forma semanal por ejemplo 1 hora de JavaScript, 2 horas de Zig o simplemente decir que ciertas tecnologias o lenguajes he usado en esa semana."
+  height="200"
+ />
+    </picture>
     <footer>
       <h3>● Open Source</h3>
       <div>

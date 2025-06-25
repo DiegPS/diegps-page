@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://www.diegps.com',
   trailingSlash: 'never',
+  outDir: './dist',
   build: {
     inlineStylesheets: 'auto',
   },
@@ -11,8 +12,5 @@ export default defineConfig({
     css: {
       devSourcemap: true,
     },
-  },
-  experimental: {
-    assets: true,
   },
 });

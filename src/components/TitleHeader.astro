@@ -2,17 +2,117 @@
 const { title } = Astro.props;
 ---
 
-<h2>
+<div class="title-header">
+  <div class="title-icon">
     <slot />
-    {title}
-</h2>
+  </div>
+  <h2 class="title-text">{title}</h2>
+</div>
 
 <style>
-    h2 {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 2rem;
-        color: var(--accent-color);
+  .title-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+    border-bottom: 2px solid var(--color-surface-light);
+    position: relative;
+  }
+
+  .title-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  }
+
+  .title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-lg);
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .title-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+  }
+
+  .title-text {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .title-header {
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-3);
     }
+
+    .title-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .title-icon :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+
+    .title-text {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .title-header {
+      flex-direction: column;
+      gap: var(--space-2);
+      text-align: center;
+    }
+
+    .title-text {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .title-header {
+      border-bottom-width: 3px;
+    }
+
+    .title-header::after {
+      height: 3px;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .title-header {
+      border-bottom: 2px solid #000;
+    }
+
+    .title-header::after {
+      background: #000;
+    }
+
+    .title-icon {
+      background: #000;
+    }
+  }
 </style>

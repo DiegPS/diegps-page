@@ -3,71 +3,265 @@ import TitleHeader from "./TitleHeader.astro";
 import ActivityIcon from "./icons/ActivityIcon.astro";
 ---
 
-<section>
+<section class="activity-section">
   <TitleHeader title="Actividad">
     <ActivityIcon />
   </TitleHeader>
-  <aside>
-    <picture>
-        <source srcset="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=18b890&icon_color=2F855A&text_color=434d58&custom_title=Trabajado%20esta%20semana&layout=compact" media="(prefers-color-scheme: light)" />
-      <img src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=0b0d14&title_color=18b890&icon_color=2F855A&text_color=fafffe&custom_title=Trabajado%20esta%20semana&layout=compact"       alt="En esta parte muestro una grafica de las tecnologias que voy empleando de forma semanal por ejemplo 1 hora de JavaScript, 2 horas de Zig o simplemente decir que ciertas tecnologias o lenguajes he usado en esa semana."
-  height="200"
- />
-    </picture>
-    <footer>
-      <h3>● Open Source</h3>
-      <div>
-        <a href="http://backgy.com" target="_blank" rel="noopener noreferrer"
-          >➜ Backgy.com</a
-        >
-        <p>
-          Backgrounds made for your website using Tailwind and CSS just copy and
-          paste ready to use
-        </p>
-        <a href="http://deploys.top" target="_blank" rel="noopener noreferrer"
-          >➜ Deploys.top</a
-        >
-        <p>
-          Plataforma para elegir en donde desplegar tu proyecto en base a las
-          tecnologias que tengas y tus necesidades especificas.
-        </p>
-        <a href="http://ontype.xyz" target="_blank" rel="noopener noreferrer"
-          >➜ OnType.xyz</a
-        >
-        <p>
-          SpeedTyper para programadores, con progreso, competencias entre
-          programadores para mejorar en mecanografia.
-        </p>
+  
+  <div class="activity-content">
+    <div class="activity-stats">
+      <picture class="stats-image">
+        <source 
+          srcset="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=fafffe&title_color=18b890&icon_color=2F855A&text_color=434d58&custom_title=Trabajado%20esta%20semana&layout=compact" 
+          media="(prefers-color-scheme: light)" 
+        />
+        <img 
+          src="https://github-readme-stats.vercel.app/api/wakatime?username=diegps&api_domain=wakapi.dev&bg_color=0b0d14&title_color=18b890&icon_color=2F855A&text_color=fafffe&custom_title=Trabajado%20esta%20semana&layout=compact" 
+          alt="Estadísticas de actividad semanal mostrando las tecnologías y tiempo de programación"
+          height="200"
+          loading="lazy"
+        />
+      </picture>
+    </div>
+    
+    <div class="activity-projects">
+      <h3 class="projects-title">● Open Source</h3>
+      
+      <div class="projects-list">
+        <article class="project-item">
+          <a 
+            href="http://backgy.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="project-link"
+            aria-label="Visitar Backgy.com"
+          >
+            ➜ Backgy.com
+          </a>
+          <p class="project-description">
+            Backgrounds made for your website using Tailwind and CSS just copy and paste ready to use
+          </p>
+        </article>
+        
+        <article class="project-item">
+          <a 
+            href="http://deploys.top" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="project-link"
+            aria-label="Visitar Deploys.top"
+          >
+            ➜ Deploys.top
+          </a>
+          <p class="project-description">
+            Plataforma para elegir en donde desplegar tu proyecto en base a las tecnologias que tengas y tus necesidades especificas.
+          </p>
+        </article>
+        
+        <article class="project-item">
+          <a 
+            href="http://ontype.xyz" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="project-link"
+            aria-label="Visitar OnType.xyz"
+          >
+            ➜ OnType.xyz
+          </a>
+          <p class="project-description">
+            SpeedTyper para programadores, con progreso, competencias entre programadores para mejorar en mecanografia.
+          </p>
+        </article>
       </div>
-    </footer>
-  </aside>
+    </div>
+  </div>
 </section>
+
 <style>
-  aside {
+  .activity-section {
+    margin-top: var(--space-12);
+  }
+
+  .activity-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
   }
+
+  .activity-stats {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-4);
+    border: 1px solid var(--color-surface-light);
+  }
+
+  .stats-image {
+    display: block;
+    width: 100%;
+  }
+
+  .stats-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .activity-projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .projects-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .project-item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-surface-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: all var(--transition-normal);
+  }
+
+  .project-item:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .project-link {
+    display: block;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-bottom: var(--space-2);
+    transition: color var(--transition-fast);
+  }
+
+  .project-link:hover {
+    color: var(--color-primary-light);
+  }
+
+  .project-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  .project-description {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Responsive Design */
   @media (max-width: 900px) {
-    aside {
-      display: flex;
-      flex-wrap: wrap;
+    .activity-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .activity-stats {
+      order: 2;
+    }
+
+    .activity-projects {
+      order: 1;
     }
   }
-  footer {
-    margin-left: 1rem;
+
+  @media (max-width: 768px) {
+    .activity-section {
+      margin-top: var(--space-8);
+    }
+
+    .activity-content {
+      gap: var(--space-4);
+    }
+
+    .activity-stats {
+      padding: var(--space-3);
+    }
+
+    .project-item {
+      padding: var(--space-3);
+    }
+
+    .project-link {
+      font-size: var(--font-size-base);
+    }
+
+    .project-description {
+      font-size: var(--font-size-xs);
+    }
   }
-  img {
-    width: 100%;
-    height: 100%;
+
+  @media (max-width: 480px) {
+    .activity-stats {
+      padding: var(--space-2);
+    }
+
+    .project-item {
+      padding: var(--space-2);
+    }
+
+    .project-item:hover {
+      transform: none;
+    }
   }
-  a {
-    display: block;
-    font-size: 1.1rem;
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .activity-stats,
+    .project-item {
+      border-width: 2px;
+    }
+
+    .project-item:hover {
+      border-width: 3px;
+    }
   }
-  a:hover {
-    color: var(--accent-color);
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .project-item,
+    .project-link {
+      transition: none;
+    }
+
+    .project-item:hover {
+      transform: none;
+    }
   }
-  h3 {
-    margin: 0px 0px 0px 0px;
+
+  /* Print styles */
+  @media print {
+    .activity-stats,
+    .project-item {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #000;
+    }
+
+    .project-link {
+      color: #000;
+    }
+
+    .project-description {
+      color: #333;
+    }
   }
 </style>

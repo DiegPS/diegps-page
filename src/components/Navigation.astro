@@ -1,67 +1,218 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 
-<nav>
-  <a href="/"
-    ><svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path
-        d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path
-        d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg
-    >Home</a
-  >
-  <a href="/blog"
-    ><svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M6 15h15"></path><path d="M21 19h-15"></path><path d="M15 11h6"
-      ></path><path d="M21 7h-6"></path><path
-        d="M9 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path><path
-        d="M3 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path></svg
-    >
-    Blog</a
-  >
+<nav class="navigation" role="navigation" aria-label="Navegación principal">
+  <div class="nav-container">
+    <a href="/" class="nav-link" aria-label="Ir al inicio">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+      </svg>
+      <span>Inicio</span>
+    </a>
+    
+    <a href="/blog" class="nav-link" aria-label="Ir al blog">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M6 15h15"></path>
+        <path d="M21 19h-15"></path>
+        <path d="M15 11h6"></path>
+        <path d="M21 7h-6"></path>
+        <path d="M9 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path>
+        <path d="M3 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2"></path>
+      </svg>
+      <span>Blog</span>
+    </a>
+  </div>
 </nav>
+
 <style>
-  nav {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem;
-    letter-spacing: 1.2px;
-    display: flex;
-    list-style: none;
+  .navigation {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-surface-light);
+    padding: var(--space-4) 0;
+    margin-bottom: var(--space-8);
   }
-  a:hover > svg {
-    transition: all 0.2s ease-in-out;
-    transform: rotate(15deg);
+
+  .nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
   }
-  a {
+
+  .nav-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 1.2rem;
+    transition: all var(--transition-normal);
+    position: relative;
+    min-height: 44px; /* Touch target size */
   }
-  a:hover {
+
+  .nav-link:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    transform: translateY(-1px);
+  }
+
+  .nav-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    background-color: var(--color-surface);
+  }
+
+  /* Active state */
+  .nav-link[href="/"] {
+    color: currentPath === "/" ? var(--color-primary) : var(--color-text-secondary);
+  }
+
+  .nav-link[href="/blog"] {
+    color: currentPath.startsWith("/blog") ? var(--color-primary) : var(--color-text-secondary);
+  }
+
+  .nav-link[href="/"]:hover,
+  .nav-link[href="/blog"]:hover {
+    color: var(--color-primary);
+  }
+
+  /* Active indicator */
+  .nav-link[href="/"]::after,
+  .nav-link[href="/blog"]::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-normal);
+  }
+
+  .nav-link[href="/"]:hover::after,
+  .nav-link[href="/blog"]:hover::after {
+    width: 80%;
+  }
+
+  /* Icon animations */
+  .nav-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .nav-link:hover svg {
     transform: scale(1.1);
-    color: var(--accent-color-secondary);
-    transition: all 0.2s ease-in-out;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 0 var(--space-3);
+      gap: var(--space-4);
+    }
+
+    .nav-link {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-sm);
+    }
+
+    .nav-link span {
+      display: none;
+    }
+
+    .nav-link svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0 var(--space-2);
+      gap: var(--space-2);
+    }
+
+    .nav-link {
+      padding: var(--space-2);
+      min-width: 44px;
+      justify-content: center;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .navigation {
+      border-bottom-width: 2px;
+    }
+
+    .nav-link {
+      border: 1px solid transparent;
+    }
+
+    .nav-link:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link,
+    .nav-link::after,
+    .nav-link svg {
+      transition: none;
+    }
+
+    .nav-link:hover {
+      transform: none;
+    }
   }
 </style>
+
+<script>
+  // Add active state management
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || (href === '/blog' && currentPath.startsWith('/blog'))) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>

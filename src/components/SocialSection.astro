@@ -8,35 +8,150 @@ import ViewAnchorCurriculum from "./ViewAnchorCurriculum.astro";
 import DownloadAnchorCurriculum from "./DownloadAnchorCurriculum.astro";
 ---
 
-<div class="social-media">
-  <SocialAnchor href="https://www.linkedin.com/in/DiegPS">
-    <LinkedIn />
-     LinkedIn
-  </SocialAnchor>
-  <SocialAnchor href="https://www.github.com/DiegPS">
-    <Github />
-     GitHub
-  </SocialAnchor>
-  <SocialAnchor href="mailto:dpahuas@gmail.com">
-    <Email />
-     Email
-  </SocialAnchor>
-  <ViewAnchorCurriculum  >
-    <Resume />
-    Ver CV
-  </ViewAnchorCurriculum>
-  <DownloadAnchorCurriculum  >
-    <Resume />
-    Descargar CV
-  </DownloadAnchorCurriculum>
+<div class="social-section">
+  <div class="social-grid">
+    <SocialAnchor href="https://www.linkedin.com/in/DiegPS" class="social-link">
+      <LinkedIn aria-hidden="true" />
+      <span>LinkedIn</span>
+    </SocialAnchor>
+    
+    <SocialAnchor href="https://www.github.com/DiegPS" class="social-link">
+      <Github aria-hidden="true" />
+      <span>GitHub</span>
+    </SocialAnchor>
+    
+    <SocialAnchor href="mailto:dpahuas@gmail.com" class="social-link">
+      <Email aria-hidden="true" />
+      <span>Email</span>
+    </SocialAnchor>
+    
+    <ViewAnchorCurriculum class="social-link">
+      <Resume aria-hidden="true" />
+      <span>Ver CV</span>
+    </ViewAnchorCurriculum>
+    
+    <DownloadAnchorCurriculum class="social-link">
+      <Resume aria-hidden="true" />
+      <span>Descargar CV</span>
+    </DownloadAnchorCurriculum>
+  </div>
 </div>
 
 <style>
-  .social-media {
-    padding: 1rem;
+  .social-section {
+    margin-top: var(--space-4);
+  }
+
+  .social-grid {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-3);
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-surface-light);
+    min-height: 48px;
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  .social-link:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .social-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-fast);
+  }
+
+  .social-link:hover svg {
+    transform: scale(1.1);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .social-grid {
+      gap: var(--space-2);
+    }
+
+    .social-link {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-xs);
+      min-width: 100px;
+      min-height: 44px;
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .social-grid {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .social-link {
+      min-width: auto;
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .social-link {
+      border-width: 2px;
+    }
+
+    .social-link:hover {
+      border-width: 3px;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .social-link,
+    .social-link svg {
+      transition: none;
+    }
+
+    .social-link:hover {
+      transform: none;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .social-link {
+      background-color: #000 !important;
+      color: white !important;
+      border: 1px solid #000 !important;
+    }
   }
 </style>

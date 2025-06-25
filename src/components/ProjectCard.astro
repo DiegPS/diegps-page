@@ -15,78 +15,266 @@ const { demoUrl, description, image, imageAlt, sourceUrl, title, tags } =
     Astro.props;
 ---
 
-<article>
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <img src={image} alt={imageAlt} />
-    <section>
-        {
-            tags.map((tag) => (
-                <span>
-                    <tag.icon strokeWidth="1.25"/>
+<article class="project-card">
+    <div class="project-image">
+        <img src={image} alt={imageAlt} loading="lazy" />
+        <div class="project-overlay">
+            <div class="project-actions">
+                {demoUrl && (
+                    <a href={demoUrl} class="project-action" aria-label={`Ver demo de ${title}`}>
+                        <Browser />
+                        <span>Demo</span>
+                    </a>
+                )}
+                {sourceUrl && (
+                    <a href={sourceUrl} class="project-action" aria-label={`Ver código fuente de ${title}`}>
+                        <Github />
+                        <span>Código</span>
+                    </a>
+                )}
+            </div>
+        </div>
+    </div>
+    
+    <div class="project-content">
+        <h3 class="project-title">{title}</h3>
+        <p class="project-description">{description}</p>
+        
+        <div class="project-tags">
+            {tags.map((tag) => (
+                <span class="project-tag">
+                    <tag.icon strokeWidth="1.25" aria-hidden="true" />
                     {tag.name}
                 </span>
-            ))
-        }
-    </section>
-    <div>
-        <slot />
+            ))}
+        </div>
     </div>
-    {demoUrl && sourceUrl &&     <footer>
-        <a href={demoUrl}><Browser />Visitar Web</a>
-        <a href={sourceUrl}><Github />Codigo Fuente</a>
-    </footer>}
-
 </article>
+
 <style>
-    img {
+    .project-card {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all var(--transition-normal);
+        border: 1px solid var(--color-surface-light);
+        position: relative;
+    }
+
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--color-primary);
+    }
+
+    .project-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+    }
+
+    .project-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 0.4rem;
-        margin: 1rem 0;
-        max-height: 300px;
+        transition: transform var(--transition-slow);
     }
-    section {
+
+    .project-card:hover .project-image img {
+        transform: scale(1.05);
+    }
+
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-actions {
+        display: flex;
+        gap: var(--space-3);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .project-action {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        padding: var(--space-2) var(--space-4);
+        background-color: var(--color-primary);
+        color: white;
+        border-radius: var(--radius-lg);
+        font-weight: 500;
+        font-size: var(--font-size-sm);
+        transition: all var(--transition-fast);
+        min-height: 44px;
+    }
+
+    .project-action:hover {
+        background-color: var(--color-primary-light);
+        transform: scale(1.05);
+        color: white;
+    }
+
+    .project-action:focus-visible {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+
+    .project-content {
+        padding: var(--space-6);
+    }
+
+    .project-title {
+        font-size: var(--font-size-2xl);
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: var(--space-3);
+        line-height: 1.3;
+    }
+
+    .project-description {
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--space-5);
+        font-size: var(--font-size-base);
+    }
+
+    .project-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.4rem;
-        padding: 1rem 0;
+        gap: var(--space-2);
     }
-    span {
+
+    .project-tag {
         display: flex;
         align-items: center;
-        gap: 0.2rem;
-        padding: 0.2rem 0.35rem;
-        border-radius: 0.4rem;
-        background-color: #17b89025;
-        color: var(--text-color);
-        font-size: 0.70rem;
+        gap: var(--space-1);
+        padding: var(--space-1) var(--space-3);
+        background-color: var(--color-primary);
+        color: white;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+        transition: all var(--transition-fast);
     }
-    footer {
-        display: flex;
-        gap: 1rem;
-        padding: 1rem 0;
+
+    .project-tag:hover {
+        background-color: var(--color-primary-light);
+        transform: translateY(-1px);
     }
-    footer a {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
+
+    .project-tag svg {
+        width: 14px;
+        height: 14px;
     }
-    a:hover {
-        color: var(--accent-color);
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .project-content {
+            padding: var(--space-4);
+        }
+
+        .project-title {
+            font-size: var(--font-size-xl);
+        }
+
+        .project-description {
+            font-size: var(--font-size-sm);
+        }
+
+        .project-actions {
+            gap: var(--space-2);
+        }
+
+        .project-action {
+            padding: var(--space-2) var(--space-3);
+            font-size: var(--font-size-xs);
+        }
     }
-    h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+
+    @media (max-width: 480px) {
+        .project-card:hover {
+            transform: none;
+        }
+
+        .project-overlay {
+            position: static;
+            opacity: 1;
+            background: none;
+            padding: var(--space-3) 0;
+        }
+
+        .project-actions {
+            justify-content: flex-start;
+        }
+
+        .project-action {
+            flex: 1;
+            justify-content: center;
+        }
     }
-    article {
-        display: flex;
-        flex-direction: column;
+
+    /* High contrast mode */
+    @media (prefers-contrast: high) {
+        .project-card {
+            border-width: 2px;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-primary);
+            border-width: 3px;
+        }
     }
-    @media(max-width: 768px) {
-        span {
-            fon
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .project-card,
+        .project-image img,
+        .project-overlay,
+        .project-action,
+        .project-tag {
+            transition: none;
+        }
+
+        .project-card:hover {
+            transform: none;
+        }
+
+        .project-card:hover .project-image img {
+            transform: none;
+        }
+    }
+
+    /* Print styles */
+    @media print {
+        .project-card {
+            break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #000;
+        }
+
+        .project-overlay {
+            display: none;
+        }
+
+        .project-tag {
+            background-color: #000 !important;
+            color: white !important;
         }
     }
 </style>

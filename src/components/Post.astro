@@ -1,37 +1,198 @@
 ---
 const { post } = Astro.props;
+const formattedDate = post.data.pubDate 
+  ? new Date(post.data.pubDate).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  : 'Sin fecha';
 ---
 
-<a href={`blog/${post.slug}`}>
-    <article>
-        <h3>{post.data.title}</h3>
-        <p>{post.data.description}</p>
-    </article>
+<a href={`blog/${post.slug}`} class="post-link">
+  <article class="post-card">
+    <header class="post-header">
+      <h3 class="post-title">{post.data.title}</h3>
+      <time class="post-date" datetime={post.data.pubDate?.toISOString()}>
+        {formattedDate}
+      </time>
+    </header>
+    
+    <p class="post-description">{post.data.description}</p>
+    
+    <div class="post-meta">
+      <span class="post-read-time">
+        📖 {Math.ceil(post.body.split(' ').length / 200)} min de lectura
+      </span>
+    </div>
+  </article>
 </a>
 
 <style>
-    p {
-        font-weight: 400;
+  .post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-normal);
+  }
+
+  .post-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .post-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-surface-light);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transform: scaleX(0);
+    transition: transform var(--transition-normal);
+  }
+
+  .post-link:hover .post-card {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .post-link:hover .post-card::before {
+    transform: scaleX(1);
+  }
+
+  .post-header {
+    margin-bottom: var(--space-4);
+  }
+
+  .post-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+    margin-bottom: var(--space-2);
+    transition: color var(--transition-fast);
+  }
+
+  .post-link:hover .post-title {
+    color: var(--color-primary);
+  }
+
+  .post-date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .post-description {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-base);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .post-read-time {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .post-card {
+      padding: var(--space-4);
     }
-    article {
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        min-height: 10rem;
-        border-radius: 5px;
-        box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.251);
+
+    .post-title {
+      font-size: var(--font-size-xl);
     }
-    article:hover {
-        transition: all 0.2s ease-in-out;
+
+    .post-description {
+      font-size: var(--font-size-sm);
     }
-    a {
-        color: var(--text-dark);
-        font-size: 1.3rem;
-        font-weight: bold;
+  }
+
+  @media (max-width: 480px) {
+    .post-card {
+      padding: var(--space-3);
     }
-    a:hover {
-        transition: all 0.2s ease-in-out;
-        color: var(--accent-color);
-        background-color: #17b8900b;
+
+    .post-title {
+      font-size: var(--font-size-lg);
     }
+
+    .post-link:hover {
+      transform: none;
+    }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .post-card {
+      border-width: 2px;
+    }
+
+    .post-link:hover .post-card {
+      border-width: 3px;
+    }
+
+    .post-card::before {
+      height: 4px;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .post-link,
+    .post-card,
+    .post-card::before,
+    .post-title {
+      transition: none;
+    }
+
+    .post-link:hover {
+      transform: none;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .post-card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #000;
+    }
+
+    .post-card::before {
+      display: none;
+    }
+
+    .post-title {
+      color: #000;
+    }
+
+    .post-description {
+      color: #333;
+    }
+  }
 </style>

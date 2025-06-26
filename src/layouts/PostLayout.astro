@@ -1,7 +1,6 @@
 ---
 const { frontmatter } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
-import Navigation from "../components/Navigation.astro";
 
 const cleanTitle = frontmatter.title.replace(/-/g, " ");
 const formattedDate = frontmatter.pubDate 
@@ -14,7 +13,6 @@ const formattedDate = frontmatter.pubDate
 ---
 
 <BaseLayout pageTitle={cleanTitle}>
-  <Navigation />
   
   <article class="post-layout">
     <header class="post-header">

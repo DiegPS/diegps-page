@@ -460,8 +460,9 @@ img {
 /* Section Common */
 .section-wrapper {
   max-width: 1340px;
+  width: 100%;
   margin: 0 auto;
-  padding: 10vh 5vw;
+  padding: 100px clamp(20px, 3.5vw, 44px);
 }
 
 .section-head {
@@ -493,7 +494,8 @@ img {
 .projects-grid {
   display: flex;
   flex-direction: column;
-  gap: 8vh;
+  gap: 60px;
+  width: 100%;
 }
 
 .project-card {
@@ -503,6 +505,7 @@ img {
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: var(--shadow-md);
   position: relative;
@@ -510,7 +513,7 @@ img {
 
 @media (min-width: 1024px) {
   .project-card {
-    grid-template-columns: 42% 58%;
+    grid-template-columns: minmax(340px, 4.2fr) minmax(460px, 5.8fr);
   }
 }
 
@@ -521,11 +524,12 @@ img {
 }
 
 .project-info {
-  padding: 5vh 4vw;
+  padding: clamp(32px, 3.5vw, 54px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-subtle);
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
@@ -668,17 +672,21 @@ img {
 
 /* Window Chrome Mockup */
 .project-window {
-  background: #0d0f17;
-  padding: 3.5vh 3vw;
+  background: #0b0d13;
+  padding: clamp(28px, 3vw, 48px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
+  min-width: 0;
 }
 
 .window-frame {
   position: relative;
+  width: 100%;
+  max-width: 100%;
   background: #0d0f17;
   border-radius: 14px;
   overflow: hidden;

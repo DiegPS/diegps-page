@@ -198,7 +198,7 @@ export default function Home() {
                   </ul>
 
                   {project.route.startsWith("/") ? (
-                    <Link className="project-action-btn" href={project.route}>
+                    <Link className="project-action-btn" href={project.route} prefetch={false}>
                       <span>Ver ficha técnica y detalles</span>
                       <ArrowUpRight />
                     </Link>

@@ -156,7 +156,7 @@
 }
 
 .product-hero-visual {
-  padding: 6vh 4vw;
+  padding: clamp(28px, 4vw, 64px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,7 +235,7 @@
 }
 
 .product-facts div {
-  padding: 36px 3vw;
+  padding: 32px clamp(16px, 2.5vw, 36px);
   border-right: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
@@ -274,7 +274,7 @@
 .product-story {
   max-width: 1340px;
   margin: 0 auto;
-  padding: 12vh 5vw;
+  padding: clamp(60px, 8vh, 100px) clamp(20px, 3.5vw, 48px);
 }
 
 .product-story > header {
@@ -377,7 +377,7 @@
 .product-cta {
   max-width: 1340px;
   margin: 0 auto 10vh;
-  padding: 8vh 6vw;
+  padding: clamp(44px, 5vw, 68px);
   background: var(--bg-surface-card);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-xl);

@@ -21,8 +21,6 @@ interface Project {
   statement: string;
   description: string;
   facts: string[];
-  windowTitle: string;
-  windowBadge: string;
 }
 
 const projects: Project[] = [
@@ -36,8 +34,6 @@ const projects: Project[] = [
     statement: "Descargar es sólo el principio.",
     description: "Una aplicación nativa para inspeccionar enlaces, elegir pistas y formatos de forma granular, y procesar audio o video directamente en tu máquina sin depender de la nube.",
     facts: ["+1,000 sitios compatibles", "FFmpeg + yt-dlp desacoplados", "Aceleración por GPU"],
-    windowTitle: "AirDown — Media Inspector & Processing Engine",
-    windowBadge: "Windows · Desktop App",
   },
   {
     number: "02",
@@ -49,8 +45,6 @@ const projects: Project[] = [
     statement: "El chat también es una superficie de producción.",
     description: "Conexión simultánea a Twitch y Kick en una sola ventana con text-to-speech local, subtitulado por voz en tiempo real e integración directa a OBS vía WebSocket.",
     facts: ["Chat unificado en tiempo real", "TTS local sin latencia de red", "OBS WebSocket directo"],
-    windowTitle: "AirStream Studio — Broadcast Companion",
-    windowBadge: "Windows · Creator Suite",
   },
   {
     number: "03",
@@ -62,8 +56,6 @@ const projects: Project[] = [
     statement: "Setenta proyectos. Una sola vista instantánea.",
     description: "Un explorador de terminal de alta velocidad que reconoce stacks, actividad git, salud de repositorios, ramas y comandos sin la fricción de abrir proyecto por proyecto.",
     facts: ["70 proyectos / 245 ms", "Git-aware en tiempo real", "Keyboard-first workflow"],
-    windowTitle: "devscope — Terminal Architecture Explorer",
-    windowBadge: "CLI · Systems Tool",
   },
 ];
 
@@ -220,15 +212,6 @@ export default function Home() {
 
               <div className="project-window">
                 <div className="window-frame">
-                  <div className="window-titlebar">
-                    <div className="window-dots" aria-hidden="true">
-                      <span className="window-dot" />
-                      <span className="window-dot" />
-                      <span className="window-dot" />
-                    </div>
-                    <span className="window-title">{project.windowTitle}</span>
-                    <span className="window-badge">{project.windowBadge}</span>
-                  </div>
                   <div className="window-content">
                     <Image
                       src={project.image}
@@ -237,6 +220,7 @@ export default function Home() {
                       height={996}
                       sizes="(max-width: 1024px) 100vw, 55vw"
                       priority={project.number === "01"}
+                      unoptimized
                     />
                   </div>
                 </div>

@@ -678,65 +678,53 @@ img {
 }
 
 .window-frame {
-  background: #141722;
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-md);
+  position: relative;
+  background: #0d0f17;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: var(--shadow-window);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 24px 60px -15px rgba(0, 0, 0, 0.85);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-card:hover .window-frame {
-  transform: scale(1.02);
+  transform: scale(1.015);
 }
 
-.window-titlebar {
-  background: #0f121b;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-subtle);
+/* Translucent Apple-Style Window Border Mask (camouflages imperfect Windows edges) */
+.window-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2.5px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.2s ease;
+  z-index: 2;
 }
 
-.window-dots {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.window-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.window-title {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
-
-.window-badge {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--text-dim);
-  text-transform: uppercase;
+.project-card:hover .window-frame::after {
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .window-content {
   position: relative;
   line-height: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 .window-content img {
   width: 100%;
   height: auto;
+  display: block;
   object-fit: cover;
+  border-radius: inherit;
 }
 
 /* Experience Timeline */

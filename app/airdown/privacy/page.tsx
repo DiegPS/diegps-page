@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import "../../legal.css";
+
+export const metadata: Metadata = {
+  title: "Política de privacidad de AirDown",
+  description: "Información clara sobre el procesamiento local, almacenamiento y conexiones de AirDown para Windows.",
+};
+
+export default function AirDownPrivacy(){return <main className="legal">
+  <nav className="legal-nav"><Link href="/airdown"><ArrowLeft/> AirDown</Link><span>Vigente desde / 28 agosto 2026</span></nav>
+  <header className="legal-head"><p className="mono">AIRDOWN / PRIVACIDAD</p><div><h1>Tu contenido se queda en tu equipo.</h1><p>AirDown es una aplicación multimedia para Windows publicada por DiegPS. Esta política explica, sin lenguaje ambiguo, qué información utiliza, dónde se guarda y cuándo se conecta a servicios externos.</p></div></header>
+  <article className="legal-body">
+    <aside className="privacy-summary"><p className="mono">RESUMEN EN 30 SEGUNDOS</p><ul><li>AirDown no requiere una cuenta.</li><li>No contiene publicidad, compras ni funciones de pago.</li><li>No incorpora analítica, seguimiento ni telemetría remota.</li><li>No sube tus archivos multimedia a servidores de AirDown o DiegPS.</li><li>Las descargas y herramientas se ejecutan directamente en tu dispositivo.</li></ul></aside>
+
+    <section><span>01</span><div><h2>Responsable y alcance</h2><p>Esta política se aplica a la aplicación de escritorio AirDown para Windows y a sus funciones de descarga, inspección y procesamiento multimedia. El responsable de la aplicación es Diego Pahua Silvan, que publica bajo el nombre DiegPS.</p><p>AirDown no opera un servicio en la nube propio para procesar archivos, crear perfiles o almacenar actividad de usuarios.</p></div></section>
+
+    <section><span>02</span><div><h2>Información utilizada por AirDown</h2><div className="privacy-table" role="table" aria-label="Información utilizada por AirDown">
+      <div className="privacy-row privacy-table-head" role="row"><b role="columnheader">Información</b><b role="columnheader">Finalidad</b><b role="columnheader">Ubicación</b></div>
+      <div className="privacy-row" role="row"><span role="cell">URLs y metadatos del medio</span><span role="cell">Inspeccionar el enlace, mostrar formatos y realizar la descarga solicitada.</span><span role="cell">Equipo del usuario y servicio de origen.</span></div>
+      <div className="privacy-row" role="row"><span role="cell">Historial de descargas</span><span role="cell">Restaurar la cola, mostrar estado y evitar descargas duplicadas cuando se activa esa opción.</span><span role="cell">Archivo local <code>history.json</code>.</span></div>
+      <div className="privacy-row" role="row"><span role="cell">Rutas y archivos multimedia</span><span role="cell">Guardar, analizar, convertir, recortar o verificar los archivos elegidos.</span><span role="cell">Únicamente en las carpetas locales seleccionadas.</span></div>
+      <div className="privacy-row" role="row"><span role="cell">Preferencias</span><span role="cell">Recordar idioma, tema, carpeta, concurrencia y opciones avanzadas.</span><span role="cell">Archivo local <code>settings.json</code>.</span></div>
+      <div className="privacy-row" role="row"><span role="cell">Diagnósticos técnicos</span><span role="cell">Registrar errores locales para facilitar la resolución de fallos.</span><span role="cell">Registro local rotativo <code>diagnostics.jsonl</code>.</span></div>
+    </div><p>El historial puede contener la URL, título, canal, miniatura, rutas de salida, fecha, estado y configuración de una descarga. Estos datos no son transmitidos al desarrollador.</p></div></section>
+
+    <section><span>03</span><div><h2>Procesamiento local de archivos</h2><p>Las herramientas de AirDown utilizan procesos locales como FFmpeg y FFprobe. La inspección de archivos, extracción de audio, remux, creación de GIF, normalización, recorte, conversión vertical, detección de silencios, hojas de miniaturas y comprobación de integridad ocurren en el dispositivo.</p><p>AirDown no conserva copias remotas de los archivos de entrada o de los resultados generados.</p></div></section>
+
+    <section><span>04</span><div><h2>Conexiones necesarias con terceros</h2><p>AirDown se conecta a Internet solamente para cumplir funciones solicitadas o mantener sus componentes. Dependiendo de la función, puede comunicarse con:</p><ul><li><strong>El sitio o plataforma de la URL proporcionada</strong>, para consultar metadatos y transferir el contenido.</li><li><strong>GitHub</strong>, para comprobar y descargar versiones oficiales de yt-dlp y Deno.</li><li><strong>Gyan.dev</strong>, para comprobar y descargar las compilaciones de FFmpeg usadas por la aplicación.</li><li><strong>SponsorBlock</strong>, mediante las funciones compatibles de yt-dlp, únicamente cuando activas la eliminación de segmentos.</li><li><strong>Microsoft Store</strong>, para distribución, instalación y actualizaciones de la aplicación conforme a la configuración de Windows.</li></ul><p>Esos servicios pueden recibir datos técnicos propios de cualquier conexión a Internet, como dirección IP, fecha, agente de usuario o recurso solicitado. Sus propias políticas de privacidad son independientes de AirDown.</p></div></section>
+
+    <section><span>05</span><div><h2>Cookies y sesiones del navegador</h2><p>La importación de cookies está desactivada de forma predeterminada. Si eliges Chrome, Edge, Firefox, Brave u Opera, AirDown solicita a yt-dlp que lea las cookies directamente desde el perfil local seleccionado para acceder a contenido que ya puedes ver con esa sesión.</p><p>AirDown guarda únicamente tu elección de navegador; no copia los valores de las cookies en su archivo de configuración o historial, no los envía al desarrollador y no puede controlar cómo la plataforma de origen utiliza tu sesión. Activa esta función sólo en un equipo y perfil de confianza.</p></div></section>
+
+    <section><span>06</span><div><h2>Diagnósticos, seguridad y componentes</h2><p>Los diagnósticos se escriben localmente y pueden incluir marcas de tiempo, errores, trazas técnicas y datos de contexto como el componente afectado. El archivo activo está limitado aproximadamente a 1 MB y AirDown conserva como máximo una versión rotada anterior. No existe envío automático de estos registros.</p><p>Los componentes descargados se validan mediante SHA-256, se prueban localmente y se instalan de forma atómica con posibilidad de restaurar la versión anterior. Ningún mecanismo elimina por completo los riesgos de software o Internet, pero estas medidas reducen descargas dañadas o instalaciones incompletas.</p></div></section>
+
+    <section><span>07</span><div><h2>Conservación y control del usuario</h2><p>Configuración, historial, registros y componentes permanecen en <code>%LOCALAPPDATA%\AirDown</code> hasta que AirDown los sustituye, el usuario los limpia o elimina manualmente esa carpeta. Los archivos descargados permanecen en la ubicación elegida por el usuario.</p><p>Puedes borrar elementos de la cola, desactivar el historial incremental, eliminar los archivos generados o borrar los datos locales de AirDown. Si necesitas ayuda para localizar o eliminar estos datos, utiliza el correo de contacto indicado abajo.</p></div></section>
+
+    <section><span>08</span><div><h2>Datos que AirDown no recopila</h2><p>AirDown no solicita nombre, dirección, correo electrónico, teléfono, ubicación precisa, contactos, información financiera ni credenciales de una cuenta de AirDown. Tampoco vende datos, crea perfiles publicitarios, comparte actividad con corredores de datos ni utiliza identificadores publicitarios.</p><p>Si contactas voluntariamente por correo, el contenido de esa conversación se utilizará únicamente para responder tu solicitud y se conservará el tiempo razonablemente necesario para atenderla.</p></div></section>
+
+    <section><span>09</span><div><h2>Uso responsable y menores</h2><p>AirDown es una herramienta de propósito general. El usuario es responsable de contar con autorización para descargar o procesar contenido y de respetar los derechos de autor, condiciones de servicio y leyes aplicables.</p><p>La aplicación no está dirigida específicamente a menores ni está diseñada para recopilar deliberadamente información personal de menores.</p></div></section>
+
+    <section><span>10</span><div><h2>Cambios y contacto</h2><p>Esta política se actualizará cuando cambie de forma material el tratamiento de información. La fecha de vigencia aparecerá siempre en la parte superior. Los cambios no convertirán silenciosamente datos locales en recopilación remota.</p><p>Para preguntas, solicitudes de privacidad o soporte relacionado con AirDown, escribe a <a href="mailto:dpahuas@gmail.com">dpahuas@gmail.com</a>.</p></div></section>
+  </article>
+</main>}

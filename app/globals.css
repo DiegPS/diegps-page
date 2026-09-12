@@ -38,6 +38,10 @@
   --accent-blue: #3b82f6;
   --accent-blue-subtle: rgba(59, 130, 246, 0.12);
 
+  --accent-purple: #c084fc;
+  --accent-purple-subtle: rgba(192, 132, 252, 0.12);
+  --accent-purple-border: rgba(192, 132, 252, 0.28);
+
   /* Radii & Elevation */
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -580,6 +584,12 @@ img {
   color: var(--accent-amber);
   border-color: var(--accent-amber-border);
   background: var(--accent-amber-subtle);
+}
+
+.project-card-purple .project-kind-badge {
+  color: var(--accent-purple);
+  border-color: var(--accent-purple-border);
+  background: var(--accent-purple-subtle);
 }
 
 .project-title {

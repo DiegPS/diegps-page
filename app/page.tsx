@@ -16,7 +16,7 @@ interface Project {
   name: string;
   route: string;
   kind: string;
-  tone: "cyan" | "green" | "amber";
+  tone: "cyan" | "green" | "amber" | "purple";
   image: string;
   statement: string;
   description: string;
@@ -48,6 +48,17 @@ const projects: Project[] = [
   },
   {
     number: "03",
+    name: "Gachy",
+    route: "/gachy",
+    kind: "Windows · Gacha History & Pity Tracker",
+    tone: "purple",
+    image: "/assets/gachy-overview.png",
+    statement: "Historial gacha y análisis de pity sin subir tus datos a la nube.",
+    description: "Sincronización directa e incremental para Genshin Impact, Honkai: Star Rail y Zenless Zone Zero en una base SQLite local. Seguimiento de tiradas, garantías, planificador de recursos y respaldo UIGF 4.2.",
+    facts: ["3 juegos de HoYoverse", "100% local en SQLite", "Exportación UIGF 4.2"],
+  },
+  {
+    number: "04",
     name: "DevScope Concept",
     route: "#devscope",
     kind: "Terminal · Developer Architecture Tool",
@@ -119,7 +130,7 @@ export default function Home() {
         {/* High-Impact Metrics */}
         <div className="hero-metrics">
           <div className="metric-box">
-            <span className="metric-num">03</span>
+            <span className="metric-num">04</span>
             <span className="metric-label">Productos independientes de software nativo</span>
           </div>
           <div className="metric-box">
@@ -165,7 +176,7 @@ export default function Home() {
       <section className="section-wrapper" id="work" aria-labelledby="work-title">
         <div className="section-head">
           <span className="mono section-eyebrow">TRABAJO SELECCIONADO</span>
-          <h2 id="work-title">Tres herramientas.<br />Tres problemas reales.</h2>
+          <h2 id="work-title">Cuatro herramientas.<br />Cuatro problemas reales.</h2>
           <p>
             Herramientas nativas y de terminal construidas con foco en rendimiento, procesamiento local en tu máquina y respeto a la privacidad.
           </p>

@@ -15,6 +15,12 @@
   --signal-border: var(--accent-emerald-border);
 }
 
+.product-shell.gachy {
+  --signal: var(--accent-purple);
+  --signal-subtle: var(--accent-purple-subtle);
+  --signal-border: var(--accent-purple-border);
+}
+
 /* Nav */
 .product-nav {
   position: sticky;

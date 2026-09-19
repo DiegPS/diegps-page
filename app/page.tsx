@@ -17,7 +17,7 @@ interface Project {
   route: string;
   storeUrl?: string;
   kind: string;
-  tone: "cyan" | "green" | "amber" | "purple";
+  tone: "cyan" | "green" | "amber" | "purple" | "blue";
   image: string;
   statement: string;
   description: string;
@@ -61,6 +61,17 @@ const projects: Project[] = [
   },
   {
     number: "04",
+    name: "GodSense",
+    route: "/godsense",
+    kind: "Windows · League Tactical HUD & Scout",
+    tone: "blue",
+    image: "/assets/godsense-scout.png",
+    statement: "Visión por computadora y análisis táctico en tiempo real sin inyección de memoria.",
+    description: "Companion nativo para League of Legends con captura continua por Desktop Duplication (DXGI), visión computacional en DartCV, coach táctico determinista, voz offline (Sherpa STT/TTS) y scout de partidas en SQLite.",
+    facts: ["DXGI + DartCV sin inyección", "Coach táctico & voz offline", "Scout de historial en SQLite local"],
+  },
+  {
+    number: "05",
     name: "DevScope Concept",
     route: "#devscope",
     kind: "Terminal · Developer Architecture Tool",
@@ -132,7 +143,7 @@ export default function Home() {
         {/* High-Impact Metrics */}
         <div className="hero-metrics">
           <div className="metric-box">
-            <span className="metric-num">04</span>
+            <span className="metric-num">05</span>
             <span className="metric-label">Productos independientes de software nativo</span>
           </div>
           <div className="metric-box">
@@ -178,7 +189,7 @@ export default function Home() {
       <section className="section-wrapper" id="work" aria-labelledby="work-title">
         <div className="section-head">
           <span className="mono section-eyebrow">TRABAJO SELECCIONADO</span>
-          <h2 id="work-title">Cuatro herramientas.<br />Cuatro problemas reales.</h2>
+          <h2 id="work-title">Cinco herramientas.<br />Cinco problemas reales.</h2>
           <p>
             Herramientas nativas y de terminal construidas con foco en rendimiento, procesamiento local en tu máquina y respeto a la privacidad.
           </p>

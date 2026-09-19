@@ -592,6 +592,12 @@ img {
   background: var(--accent-purple-subtle);
 }
 
+.project-card-blue .project-kind-badge {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(56, 189, 248, 0.08);
+}
+
 .project-title {
   font-size: clamp(2rem, 3.2vw, 3rem);
   font-weight: 800;

@@ -21,6 +21,12 @@
   --signal-border: var(--accent-purple-border);
 }
 
+.product-shell.godsense {
+  --signal: #38bdf8;
+  --signal-subtle: rgba(56, 189, 248, 0.08);
+  --signal-border: rgba(56, 189, 248, 0.22);
+}
+
 /* Nav */
 .product-nav {
   position: sticky;

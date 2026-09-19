@@ -3,6 +3,17 @@ import Link from "next/link";
 import { ArrowLeft, Download, ShieldCheck } from "lucide-react";
 import "../product.css";
 
+function MicrosoftIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <rect x="1" y="1" width="6.5" height="6.5" fill="#F25022" />
+      <rect x="8.5" y="1" width="6.5" height="6.5" fill="#7FBA00" />
+      <rect x="1" y="8.5" width="6.5" height="6.5" fill="#00A4EF" />
+      <rect x="8.5" y="8.5" width="6.5" height="6.5" fill="#FFB900" />
+    </svg>
+  );
+}
+
 export default function GodSensePage() {
   return (
     <main className="product-shell godsense">
@@ -35,7 +46,8 @@ export default function GodSensePage() {
             Visión por computadora nativa, coach táctico determinista con voz offline y scout de partidas sin inyección de memoria ni riesgos de baneo.
           </p>
           <span className="store-button disabled">
-            <Download /> Próximamente en Microsoft Store
+            <MicrosoftIcon />
+            <span>Próximamente en Microsoft Store</span>
           </span>
         </div>
 

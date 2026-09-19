@@ -1,7 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Download, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Download, ShieldCheck } from "lucide-react";
 import "../product.css";
+
+function MicrosoftIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <rect x="1" y="1" width="6.5" height="6.5" fill="#F25022" />
+      <rect x="8.5" y="1" width="6.5" height="6.5" fill="#7FBA00" />
+      <rect x="1" y="8.5" width="6.5" height="6.5" fill="#00A4EF" />
+      <rect x="8.5" y="8.5" width="6.5" height="6.5" fill="#FFB900" />
+    </svg>
+  );
+}
 
 export default function AirDownPage() {
   return (
@@ -35,20 +46,15 @@ export default function AirDownPage() {
             Descarga, inspecciona y procesa video o audio desde una aplicación nativa, rápida y completamente gratuita.
           </p>
           <a
-            className="ms-store-badge-link"
+            className="store-button"
             href="https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Descargar AirDown en Microsoft Store"
           >
-            <Image
-              src="/assets/microsoft-store-badge.svg"
-              alt="Descárgalo de Microsoft"
-              width={166}
-              height={60}
-              priority
-              unoptimized
-            />
+            <MicrosoftIcon />
+            <span>Descargar en Microsoft Store</span>
+            <ArrowUpRight className="store-btn-arrow" />
           </a>
         </div>
 
@@ -156,19 +162,15 @@ export default function AirDownPage() {
           <Link href="/airdown/privacy">Leer política de privacidad →</Link>
         </div>
         <a
-          className="ms-store-badge-link"
+          className="store-button"
           href="https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Descargar AirDown en Microsoft Store"
         >
-          <Image
-            src="/assets/microsoft-store-badge.svg"
-            alt="Descárgalo de Microsoft"
-            width={166}
-            height={60}
-            unoptimized
-          />
+          <MicrosoftIcon />
+          <span>Descargar en Microsoft Store</span>
+          <ArrowUpRight className="store-btn-arrow" />
         </a>
       </section>
     </main>

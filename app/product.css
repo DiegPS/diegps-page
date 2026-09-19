@@ -161,6 +161,26 @@
   height: 17px;
 }
 
+.ms-store-badge-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  line-height: 0;
+}
+
+.ms-store-badge-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.ms-store-badge-link img {
+  height: 52px;
+  width: auto;
+  display: block;
+}
+
 .product-hero-visual {
   padding: clamp(28px, 4vw, 64px);
   display: flex;

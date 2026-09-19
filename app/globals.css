@@ -666,6 +666,33 @@ img {
   transform: translate(2px, -2px);
 }
 
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.ms-store-badge-card {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  line-height: 0;
+}
+
+.ms-store-badge-card:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.ms-store-badge-card img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 .concept-badge {
   font-family: var(--font-mono);
   font-size: 11px;

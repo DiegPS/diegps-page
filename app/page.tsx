@@ -15,6 +15,7 @@ interface Project {
   number: string;
   name: string;
   route: string;
+  storeUrl?: string;
   kind: string;
   tone: "cyan" | "green" | "amber" | "purple";
   image: string;
@@ -28,6 +29,7 @@ const projects: Project[] = [
     number: "01",
     name: "AirDown",
     route: "/airdown",
+    storeUrl: "https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US",
     kind: "Windows · Multimedia Nativo",
     tone: "cyan",
     image: "/assets/airdown-main-dark.png",
@@ -208,16 +210,36 @@ export default function Home() {
                     ))}
                   </ul>
 
-                  {project.route.startsWith("/") ? (
-                    <Link className="project-action-btn" href={project.route} prefetch={false}>
-                      <span>Ver ficha técnica y detalles</span>
-                      <ArrowUpRight />
-                    </Link>
-                  ) : (
-                    <span className="concept-badge">
-                      <span>Concepto arquitectónico en desarrollo</span>
-                    </span>
-                  )}
+                  <div className="project-card-actions">
+                    {project.route.startsWith("/") ? (
+                      <Link className="project-action-btn" href={project.route} prefetch={false}>
+                        <span>Ver ficha técnica y detalles</span>
+                        <ArrowUpRight />
+                      </Link>
+                    ) : (
+                      <span className="concept-badge">
+                        <span>Concepto arquitectónico en desarrollo</span>
+                      </span>
+                    )}
+
+                    {project.storeUrl && (
+                      <a
+                        className="ms-store-badge-card"
+                        href={project.storeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Descargar ${project.name} en Microsoft Store`}
+                      >
+                        <Image
+                          src="/assets/microsoft-store-badge.svg"
+                          alt="Disponible en Microsoft Store"
+                          width={140}
+                          height={50}
+                          unoptimized
+                        />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
 

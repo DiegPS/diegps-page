@@ -34,9 +34,22 @@ export default function AirDownPage() {
           <p className="product-lead">
             Descarga, inspecciona y procesa video o audio desde una aplicación nativa, rápida y completamente gratuita.
           </p>
-          <span className="store-button disabled">
-            <Download /> Próximamente en Microsoft Store
-          </span>
+          <a
+            className="ms-store-badge-link"
+            href="https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Descargar AirDown en Microsoft Store"
+          >
+            <Image
+              src="/assets/microsoft-store-badge.svg"
+              alt="Descárgalo de Microsoft"
+              width={166}
+              height={60}
+              priority
+              unoptimized
+            />
+          </a>
         </div>
 
         <div className="product-hero-visual">
@@ -138,8 +151,25 @@ export default function AirDownPage() {
       </section>
 
       <section className="product-cta">
-        <h2>Gratuita.<br />Sin letra pequeña.</h2>
-        <Link href="/airdown/privacy">Leer política de privacidad →</Link>
+        <div>
+          <h2>Gratuita.<br />Sin letra pequeña.</h2>
+          <Link href="/airdown/privacy">Leer política de privacidad →</Link>
+        </div>
+        <a
+          className="ms-store-badge-link"
+          href="https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Descargar AirDown en Microsoft Store"
+        >
+          <Image
+            src="/assets/microsoft-store-badge.svg"
+            alt="Descárgalo de Microsoft"
+            width={166}
+            height={60}
+            unoptimized
+          />
+        </a>
       </section>
     </main>
   );

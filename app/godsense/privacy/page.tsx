@@ -346,7 +346,7 @@ export default function GodSensePrivacy() {
                 GitHub de DiegPS
               </a>{" "}
               o escribir por correo electrónico a{" "}
-              <a href="mailto:dpahuas@gmail.com">dpahuas@gmail.com</a>.
+              <a href="mailto:support@diegps.com">support@diegps.com</a>.
             </p>
           </div>
         </section>

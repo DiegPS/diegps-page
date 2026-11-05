@@ -1,53 +1,43 @@
-# DESIGN — Diego Pahua Silvan Portfolio
+# DiegPS — Software that comes alive
 
-## Visual thesis
+## Research and decisions
 
-An editorial product field-guide presented through real software surfaces. The site feels like an independent creative developer’s release notebook: precise, dense where the work is dense, and quiet where the work needs space. Product screenshots are the visual story, never decoration.
+Studied Lusion (https://lusion.co/) for spatial art direction, Codrops' on-scroll perspective grids (https://tympanus.net/codrops/2023/08/03/on-scroll-perspective-grid-animations/) for depth linked to scrolling, and Bruno Simon (https://bruno-simon.com/) for interaction that gives a portfolio its own identity.
 
-## Core language
+Considered an editorial paper archive, an OS/terminal simulation, and a cinematic software scene. The user rejected paper/cream, rigid rules, tab toolbars around the screenshots, and simply reversing the original two-column layout. An OS simulation adds UI unrelated to discovering the work. The chosen direction builds the composition and movement from the actual software interfaces, which are the subject of this portfolio.
 
-- **Canvas:** warm mineral paper (`#e9e7df`) with near-black ink (`#11110f`). Dark product bands may use `#111312`.
-- **Signals:** AirDown cyan (`#00d9c6`), AirStream signal green (`#62ff2e`), DevScope amber (`#f5c84b`). Never combine them as a gradient.
-- **Typography:** bold grotesk/sans for statements; compact mono for labels, metadata and navigation. Headlines are editorial, not SaaS-sized.
-- **Geometry:** square and lightly chamfered surfaces. Default radius 0–8px. Pill shapes only for true status labels.
-- **Lines:** 1px rules organize the page like a technical document. Avoid floating card grids.
-- **Composition:** asymmetric columns, oversized project numerals, cropped software windows, vertical annotations and deliberate overlap.
+## Art direction
 
-## Page behavior
+Graphite #0a0b10, cool white #f0f1f7, periwinkle #a9b6ff, restrained cobalt lighting and each product's native colors. Modern grotesk typography keeps the site current. No paper palette, faux stickers, decorative toolbars or invented metrics.
 
-- The first viewport identifies Diego, his role and the three real products immediately.
-- The homepage is a narrative index, not a generic landing page.
-- Product routes behave like compact product dossiers with a strong screenshot-led opening.
-- Privacy routes are sober legal documents sharing the same header and typographic system.
-- Desktop uses editorial splits and controlled overlaps; mobile becomes a strict single-column reading order.
+The three-screen arrangement is the central motif. Perspective, separate depth planes, light and a subtle orbital geometry connect desktop software to a spatial experience. Selecting the exposed portion of a lateral screenshot brings its project forward. The central screenshot opens its real full-size image; the discreet title links to its case study.
 
-## Imagery
+## Motion choreography
 
-- Use only supplied logos and real screenshots.
-- Screenshots remain legible and uncropped when conveying a workflow; decorative crops are allowed only when the full screenshot appears elsewhere nearby.
-- Window frames are minimal: one line, one label, no fake browser chrome.
-- AirStream and DevScope screenshots containing live/private-looking data should be framed as product previews, not enlarged beyond what is needed.
+Desktop native scroll drives a short sticky scene: the heading moves up, the side screens separate in depth and the camera changes perspective. Pointer movement adds a small camera tilt. Later project screens rotate and translate according to their viewport position. A shared baseline and consistent two-column project rows keep navigation and reading order clear. Depth motion is restrained and symmetric.
 
-## Motion
+Motion uses IntersectionObserver and one scheduled animation frame per input, with no continuous background render loop. Content is always present in server HTML. No loader, scroll hijack, automatic carousel or audio. Small screens keep all three interfaces but remove the pinned sequence and camera tilt. Reduced-motion mode presents a static layout and disables transformations.
 
-- Motion communicates hierarchy: a short initial reveal, gentle screenshot drift, and line/label transitions.
-- No parallax spectacle, blob movement, infinite marquee or gratuitous WebGL.
-- Honor `prefers-reduced-motion`.
+## Site and accessibility
 
-## Interaction
+A maximum 1280px content width prevents ultrawide stretching. Product pages continue the same visual identity with a widescreen cover. Existing availability, downloads, content and legal documents retain their meaning. Gallery controls support keyboard arrows; native dialogs support Escape and restore focus. Focus remains visible, screenshots retain intrinsic proportions, and navigation is available on mobile.
 
-- Links use visible underlines or directional arrows; hover changes position/color subtly.
-- Focus states are high contrast and never removed.
-- Navigation stays compact and functional.
+## Maintenance
 
-## Anti-patterns
+Home/product styles are scoped under .portfolio. Typed project data stays centralized. Run npm run assets:social to regenerate previews and icons. Verify types, build, HTTP routes, native scrolling, keyboard navigation, modal focus, narrow layouts and ultrawide limits before publishing the generated build with Wrangler.
 
-- No purple/blue gradients, glassmorphism, glow clouds, feature-card carpets, fake metrics, stock 3D objects, testimonials, pricing sections or invented claims.
-- No repeated rounded rectangles as the main layout system.
-- No generic “building digital experiences” language.
+## Proportions, hierarchy and light
 
-## Content voice
+Use each screenshot’s intrinsic aspect ratio from the image manifest to calculate its container width. Never shrink an image into a wider colored box; scale the frame and image together. Apply the same rule to social previews. The selected project sits on the center axis; neighboring captures use equivalent depth and mirrored small inclinations. Labels share a stable baseline and a brief hint explains the interaction.
 
-- Concrete, direct and bilingual-aware. Describe what the software does, how it works locally, and who it helps.
-- Prefer evidence visible in the product: formats, local processing, platforms, components and workflows.
-- Never imply open-source availability for private repositories.
+The author line is 15px on desktop and 13px on mobile, rather than tiny metadata beneath a large title. Supporting copy and project descriptions remain readable. Atmospheric light lives in a full-viewport layer behind the scene, independent from the maximum content width, and fades at all edges. Screens keep their width limit; light never inherits that limit.
+
+## Impeccable refinement — November 2026
+
+Preserve the established spatial, dark portfolio identity. Project imagery remains the subject. Section headings carry their own meaning without generic numbered kickers. Supporting copy uses a shared 15px scale and essential metadata a 12px minimum; heading tracking stops at -0.04em.
+
+Gallery neighbors are real previous/next buttons with at least 44px targets, including mobile. Screenshot edges remain clickable as an alternative. The project name remains the case-study link; screenshot buttons open a native dialog. The dialog caption describes enlargement rather than asserting every visual is a product screenshot, because OnAuto also uses promotional artwork.
+
+Use the graphite/periwinkle root tokens on legal pages as well as portfolio pages. Choose one screenshot frame treatment rather than adding a border plus a broad shadow. Portrait previews preserve their natural proportions and have a height-derived width limit in mobile project cards.
+
+Scroll motion batches layout reads before style writes. Compact screens and reduced-motion settings reset depth and camera offsets. Preserve immediate color and focus feedback rather than globally removing all transitions. See DESIGN-REVIEW.md for evidence and limits of the quality pass.

@@ -3,35 +3,51 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vinext dev",
+    "dev": "vite dev",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "deploy": "vinext-cloudflare deploy --config dist/server/wrangler.json",
-    "dev:vinext": "vinext dev",
+    "dev:vinext": "vinext dev --port 3000",
     "build:vinext": "vinext build",
     "deploy:vinext": "vinext-cloudflare deploy --config dist/server/wrangler.json",
     "next:dev": "next dev",
-    "next:build": "next build"
+    "next:build": "next build",
+    "typecheck": "tsc --noEmit --incremental false",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "fonts:prepare": "node scripts/prepare-fonts.mjs",
+    "check": "npm run typecheck && npm run build",
+    "test:smoke": "node --test scripts/smoke.test.mjs",
+    "assets:social": "node scripts/social-images.mjs",
+    "test:routes": "node scripts/check-routes.mjs",
+    "format": "prettier --write app scripts *.ts *.json *.md .github/workflows/*.yml",
+    "format:check": "prettier --check app scripts *.ts *.json *.md .github/workflows/*.yml"
   },
   "dependencies": {
-    "@vinext/cloudflare": "^1.0.0-beta.6",
+    "@vinext/cloudflare": "^1.0.1",
     "lucide-react": "1.31.0",
-    "next": "16.2.6",
+    "next": "^16.3.8",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-server-dom-webpack": "^19.2.8",
-    "vinext": "^1.0.0-beta.8"
+    "vinext": "^1.0.1"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.54.3",
+    "@cloudflare/vite-plugin": "^1.62.5",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^6.1.1",
     "@vitejs/plugin-rsc": "^0.5.34",
+    "prettier": "^3.9.9",
+    "sharp": "^0.35.5",
     "typescript": "5.9.3",
     "vite": "^8.2.2",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.147.0"
   },
-  "type": "module"
+  "type": "module",
+  "overrides": {
+    "satori": {
+      "fflate": "0.8.3"
+    }
+  }
 }

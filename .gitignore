@@ -9,3 +9,5 @@ node_modules
 .wrangler/
 .dev.vars
 .dev.vars.*
+*.tsbuildinfo
+.codex-preview/

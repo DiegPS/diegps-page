@@ -1,0 +1,142 @@
+{
+  "airdown-components": {
+    "width": 1224,
+    "height": 791
+  },
+  "airdown-logo": {
+    "width": 768,
+    "height": 768
+  },
+  "airdown-main-dark": {
+    "width": 1224,
+    "height": 791
+  },
+  "airdown-main-light": {
+    "width": 1226,
+    "height": 793
+  },
+  "airdown-tools": {
+    "width": 1224,
+    "height": 791
+  },
+  "airstream-connections": {
+    "width": 1000,
+    "height": 734
+  },
+  "airstream-icon": {
+    "width": 512,
+    "height": 512
+  },
+  "airstream-obs": {
+    "width": 1000,
+    "height": 734
+  },
+  "airstream-subtitles": {
+    "width": 1000,
+    "height": 734
+  },
+  "airstream-tts": {
+    "width": 1000,
+    "height": 734
+  },
+  "devscope-help": {
+    "width": 1415,
+    "height": 996
+  },
+  "devscope-main": {
+    "width": 1413,
+    "height": 995
+  },
+  "gachy-backup": {
+    "width": 1920,
+    "height": 1080
+  },
+  "gachy-history": {
+    "width": 1920,
+    "height": 1080
+  },
+  "gachy-logo": {
+    "width": 1254,
+    "height": 1254
+  },
+  "gachy-overview": {
+    "width": 1920,
+    "height": 1080
+  },
+  "gachy-planner": {
+    "width": 1920,
+    "height": 1080
+  },
+  "gachy-statistics": {
+    "width": 1920,
+    "height": 1080
+  },
+  "godsense-coach": {
+    "width": 1600,
+    "height": 1000
+  },
+  "godsense-history": {
+    "width": 1600,
+    "height": 1000
+  },
+  "godsense-logo": {
+    "width": 256,
+    "height": 256
+  },
+  "godsense-metrics": {
+    "width": 1600,
+    "height": 1000
+  },
+  "godsense-roster": {
+    "width": 1600,
+    "height": 1000
+  },
+  "godsense-scout": {
+    "width": 1600,
+    "height": 1000
+  },
+  "godsense-vision": {
+    "width": 1600,
+    "height": 1000
+  },
+  "onauto-audit": {
+    "width": 1898,
+    "height": 1239
+  },
+  "onauto-dashboard": {
+    "width": 1898,
+    "height": 1239
+  },
+  "onauto-logo": {
+    "width": 512,
+    "height": 512
+  },
+  "onauto-orders": {
+    "width": 1898,
+    "height": 1239
+  },
+  "onauto-reports": {
+    "width": 1898,
+    "height": 1239
+  },
+  "onauto-settings": {
+    "width": 1898,
+    "height": 1239
+  },
+  "workser-analytics": {
+    "width": 336,
+    "height": 497
+  },
+  "workser-filters": {
+    "width": 338,
+    "height": 497
+  },
+  "workser-icon": {
+    "width": 128,
+    "height": 128
+  },
+  "workser-settings": {
+    "width": 335,
+    "height": 491
+  }
+}

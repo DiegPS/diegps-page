@@ -1,423 +1,326 @@
-import Image from "next/image";
+import type { CSSProperties } from "react";
+import imageManifest from "./lib/image-manifest.json";
+import { SpatialMotion } from "./components/spatial-motion";
+import "./home.css";
+import { Workbench } from "./components/workbench";
+import { pageMetadata } from "./lib/seo";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Code2, Layers3, Monitor, Server, Terminal } from "lucide-react";
+import { SiteHeader } from "./components/site-header";
+import { Screenshot } from "./components/screenshot";
+import { SiteFooter } from "./components/site-footer";
+import { PersonSchema } from "./components/person-schema";
+import { projects } from "./lib/projects";
 
-function GithubIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-      <path d="M9 18c-4.51 2-5-2-7-2" />
-    </svg>
-  );
-}
-
-function MicrosoftIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <rect x="1" y="1" width="6.5" height="6.5" fill="#F25022" />
-      <rect x="8.5" y="1" width="6.5" height="6.5" fill="#7FBA00" />
-      <rect x="1" y="8.5" width="6.5" height="6.5" fill="#00A4EF" />
-      <rect x="8.5" y="8.5" width="6.5" height="6.5" fill="#FFB900" />
-    </svg>
-  );
-}
-
-interface Project {
-  number: string;
-  name: string;
-  route: string;
-  storeUrl?: string;
-  kind: string;
-  tone: "cyan" | "green" | "amber" | "purple" | "blue";
-  image: string;
-  statement: string;
-  description: string;
-  facts: string[];
-}
-
-const projects: Project[] = [
-  {
-    number: "01",
-    name: "AirDown",
-    route: "/airdown",
-    storeUrl: "https://apps.microsoft.com/detail/9nfq8dc65h14?hl=es-ES&gl=US",
-    kind: "Windows · Multimedia Nativo",
-    tone: "cyan",
-    image: "/assets/airdown-main-dark.png",
-    statement: "Descargar es sólo el principio.",
-    description: "Una aplicación nativa para inspeccionar enlaces, elegir pistas y formatos de forma granular, y procesar audio o video directamente en tu máquina sin depender de la nube.",
-    facts: ["+1,000 sitios compatibles", "FFmpeg + yt-dlp desacoplados", "Aceleración por GPU"],
-  },
-  {
-    number: "02",
-    name: "AirStream Studio",
-    route: "/airstream",
-    kind: "Windows · Streaming de Alta Producción",
-    tone: "green",
-    image: "/assets/airstream-connections.png",
-    statement: "El chat también es una superficie de producción.",
-    description: "Conexión simultánea a Twitch y Kick en una sola ventana con text-to-speech local, subtitulado por voz en tiempo real e integración directa a OBS vía WebSocket.",
-    facts: ["Chat unificado en tiempo real", "TTS local sin latencia de red", "OBS WebSocket directo"],
-  },
-  {
-    number: "03",
-    name: "Gachy",
-    route: "/gachy",
-    kind: "Windows · Gacha History & Pity Tracker",
-    tone: "purple",
-    image: "/assets/gachy-overview.png",
-    statement: "Historial gacha y análisis de pity sin subir tus datos a la nube.",
-    description: "Sincronización directa e incremental para Genshin Impact, Honkai: Star Rail y Zenless Zone Zero en una base SQLite local. Seguimiento de tiradas, garantías, planificador de recursos y respaldo UIGF 4.2.",
-    facts: ["3 juegos de HoYoverse", "100% local en SQLite", "Exportación UIGF 4.2"],
-  },
-  {
-    number: "04",
-    name: "GodSense",
-    route: "/godsense",
-    kind: "Windows · League Tactical HUD & Scout",
-    tone: "blue",
-    image: "/assets/godsense-scout.png",
-    statement: "Visión por computadora y análisis táctico en tiempo real sin inyección de memoria.",
-    description: "Companion nativo para League of Legends con captura continua por Desktop Duplication (DXGI), visión computacional en DartCV, coach táctico determinista, voz offline (Sherpa STT/TTS) y scout de partidas en SQLite.",
-    facts: ["DXGI + DartCV sin inyección", "Coach táctico & voz offline", "Scout de historial en SQLite local"],
-  },
-  {
-    number: "05",
-    name: "DevScope Concept",
-    route: "#devscope",
-    kind: "Terminal · Developer Architecture Tool",
-    tone: "amber",
-    image: "/assets/devscope-main.png",
-    statement: "Setenta proyectos. Una sola vista instantánea.",
-    description: "Un explorador de terminal de alta velocidad que reconoce stacks, actividad git, salud de repositorios, ramas y comandos sin la fricción de abrir proyecto por proyecto.",
-    facts: ["70 proyectos / 245 ms", "Git-aware en tiempo real", "Keyboard-first workflow"],
-  },
-];
-
-function Header() {
-  return (
-    <header className="site-header">
-      <div className="header-brand">
-        <Link className="wordmark" href="/" aria-label="Inicio">
-          DP<span>/</span>S
-        </Link>
-        <span className="brand-meta">Diego Pahua Silvan</span>
-      </div>
-
-      <nav aria-label="Navegación principal">
-        <a className="nav-link" href="#work">Trabajo</a>
-        <a className="nav-link" href="#experience">Experiencia</a>
-        <a className="nav-link" href="#capabilities">Capacidades</a>
-        <a className="nav-link" href="#contact">Contacto</a>
-      </nav>
-
-      <div className="availability">
-        <span className="status-dot" aria-hidden="true" />
-        <span>Disponible para proyectos</span>
-      </div>
-    </header>
+export function generateMetadata() {
+  return pageMetadata(
+    "/",
+    "Diego Pahua Silvan — Software que cobra vida.",
+    "Aplicaciones de escritorio, extensiones y sistemas web. Explora OnAuto, AirDown, AirStream Studio, Gachy, GodSense, DevScope y Workser con Diego Pahua Silvan.",
   );
 }
 
 export default function Home() {
   return (
-    <main>
-      <Header />
-
-      {/* Hero Section */}
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-badge-row">
-          <span className="eyebrow-pill">
-            <i>●</i> Full-Stack Developer · Systems &amp; Desktop Builder
-          </span>
-        </div>
-
-        <h1 id="hero-title">
-          Software que llega hasta el escritorio.
-        </h1>
-
-        <p className="hero-lead">
-          Diseño y construyo productos completos: desde interfaces de usuario nativas, rápidas y táctiles, hasta microservicios de alto volumen e infraestructura cloud resiliente.
-        </p>
-
-        <div className="hero-actions">
-          <a href="#work" className="btn-primary">
-            <span>Explorar proyectos seleccionados</span>
-            <ArrowDown />
-          </a>
-          <a href="mailto:dpahuas@gmail.com" className="btn-secondary">
-            <span>Contactar directamente</span>
-            <ArrowUpRight />
-          </a>
-        </div>
-
-        {/* High-Impact Metrics */}
-        <div className="hero-metrics">
-          <div className="metric-box">
-            <span className="metric-num">05</span>
-            <span className="metric-label">Productos independientes de software nativo</span>
+    <div className="portfolio">
+      <PersonSchema />
+      <SpatialMotion />
+      <SiteHeader />
+      <main id="main-content">
+        <section className="spatial-hero" aria-labelledby="hero-title">
+          <div className="spatial-pin">
+            <div className="spatial-atmosphere" aria-hidden="true" />
+            <div className="spatial-heading">
+              <p>
+                Diego Pahua Silvan <span>· Desarrollador independiente</span>
+              </p>
+              <h1 id="hero-title">
+                De una idea
+                <br />
+                <span>a tu pantalla.</span>
+              </h1>
+            </div>
+            <Workbench />
+            <div className="spatial-footnote">
+              <p>
+                Escritorio. Web. Sistemas.
+                <br />
+                <span>Software propio, de principio a fin.</span>
+              </p>
+              <a href="#work" aria-label="Explorar todos los proyectos">
+                <span>Desliza para descubrir</span>
+                <span aria-hidden="true">↓</span>
+              </a>
+            </div>
           </div>
-          <div className="metric-box">
-            <span className="metric-num">+1,000</span>
-            <span className="metric-label">Sitios web compatibles procesados localmente</span>
+        </section>
+        <section id="work" className="work-section section-container" aria-labelledby="work-title">
+          <div className="section-heading">
+            <div>
+              <h2 id="work-title">
+                Siete ideas.
+                <br />
+                <span className="text-muted">Siete universos.</span>
+              </h2>
+            </div>
+            <p>
+              Siete proyectos propios. Gestión de talleres, multimedia, streaming, juegos, empleo y
+              herramientas de desarrollo. Cada uno, una respuesta a un problema concreto.
+            </p>
           </div>
-          <div className="metric-box">
-            <span className="metric-num">245 ms</span>
-            <span className="metric-label">Tiempo de escaneo de 70 proyectos en DevScope</span>
-          </div>
-          <div className="metric-box">
-            <span className="metric-num">+3 Años</span>
-            <span className="metric-label">Desarrollando software en producción empresarial</span>
-          </div>
-        </div>
-
-        {/* Tech Rail */}
-        <div className="tech-rail" aria-label="Tecnologías destacadas">
-          <span className="tech-rail-label">CORE STACK</span>
-          <span className="tech-tag">Java / Jakarta EE</span>
-          <span className="tech-tag">Go</span>
-          <span className="tech-tag">Flutter / Dart</span>
-          <span className="tech-tag">React / Next.js</span>
-          <span className="tech-tag">TypeScript</span>
-          <span className="tech-tag">Azure</span>
-          <span className="tech-tag">Docker</span>
-          <span className="tech-tag">FFmpeg</span>
-        </div>
-      </section>
-
-      {/* Manifesto / Philosophy */}
-      <section className="manifesto-section" aria-label="Filosofía de desarrollo">
-        <div className="manifesto-card">
-          <span className="mono manifesto-tag">[ PRINCIPIO DE INGENIERÍA ]</span>
-          <p className="manifesto-text">
-            No construyo demos que parecen productos.
-            <span className="manifesto-emphasis">Construyo productos que ya se pueden usar.</span>
-          </p>
-        </div>
-      </section>
-
-      {/* Work / Projects Showcase */}
-      <section className="section-wrapper" id="work" aria-labelledby="work-title">
-        <div className="section-head">
-          <span className="mono section-eyebrow">TRABAJO SELECCIONADO</span>
-          <h2 id="work-title">Cinco herramientas.<br />Cinco problemas reales.</h2>
-          <p>
-            Herramientas nativas y de terminal construidas con foco en rendimiento, procesamiento local en tu máquina y respeto a la privacidad.
-          </p>
-        </div>
-
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <article
-              className={`project-card project-card-${project.tone}`}
-              id={project.name.startsWith("DevScope") ? "devscope" : undefined}
-              key={project.name}
-            >
-              <div className="project-info">
-                <div>
-                  <div className="project-header-meta">
-                    <span className="project-num">{project.number}</span>
-                    <span className="project-kind-badge">{project.kind}</span>
+          <div className="project-list">
+            {projects.map((project) => (
+              <article
+                className={`project-card tone-${project.tone}`}
+                id={project.slug}
+                key={project.slug}
+                style={
+                  {
+                    "--project-ratio":
+                      imageManifest[project.image as keyof typeof imageManifest].width /
+                      imageManifest[project.image as keyof typeof imageManifest].height,
+                  } as CSSProperties
+                }
+              >
+                <div className="project-visual" data-depth>
+                  <div className="project-visual-meta">
+                    <span className="mono">
+                      {project.number} / {project.category}
+                    </span>
+                    <span
+                      className={`project-status ${project.status === "Publicado" ? "is-live" : ""}`}
+                    >
+                      <span />
+                      {project.status}
+                    </span>
                   </div>
-
-                  <h3 className="project-title">{project.name}</h3>
-                  <p className="project-statement">{project.statement}</p>
-                  <p className="project-desc">{project.description}</p>
+                  <div className="project-screen">
+                    <Screenshot
+                      name={project.image}
+                      alt={project.imageAlt}
+                      sizes="(max-width: 760px) 90vw, 50vw"
+                    />
+                  </div>
+                  <span className="project-visual-name" aria-hidden="true">
+                    {project.shortName}
+                  </span>
                 </div>
-
-                <div>
-                  <ul className="project-facts-list" aria-label="Especificaciones técnicas">
-                    {project.facts.map((fact) => (
-                      <li key={fact}>{fact}</li>
+                <div className="project-copy">
+                  <div className="project-title-row">
+                    <img
+                      className="project-logo"
+                      src={`/assets/optimized/${project.logo}.webp`}
+                      width="48"
+                      height="48"
+                      alt=""
+                      loading="lazy"
+                    />
+                    <span className="mono">{project.platform}</span>
+                  </div>
+                  <h3>{project.name}</h3>
+                  <p className="project-statement">{project.statement}</p>
+                  <p className="project-description">{project.description}</p>
+                  <ul className="project-tags">
+                    {project.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
                     ))}
                   </ul>
-
-                  <div className="project-card-actions">
-                    {project.route.startsWith("/") ? (
-                      <Link className="project-action-btn" href={project.route} prefetch={false}>
-                        <span>Ver ficha técnica y detalles</span>
-                        <ArrowUpRight />
-                      </Link>
-                    ) : (
-                      <span className="concept-badge">
-                        <span>Concepto arquitectónico en desarrollo</span>
-                      </span>
-                    )}
-
+                  <div className="project-actions">
+                    <Link className="text-link" href={`/${project.slug}`}>
+                      Explorar proyecto <ArrowUpRight size={18} />
+                    </Link>
                     {project.storeUrl && (
                       <a
-                        className="project-store-btn"
+                        className="project-store"
                         href={project.storeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Obtener ${project.name} en Microsoft Store`}
                       >
-                        <MicrosoftIcon />
-                        <span>Microsoft Store</span>
-                        <ArrowUpRight className="store-arrow" />
+                        Microsoft Store <ArrowUpRight size={14} />
+                      </a>
+                    )}
+                    {project.releaseUrl && (
+                      <a
+                        className="project-store"
+                        href={project.releaseUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub Releases <ArrowUpRight size={14} />
                       </a>
                     )}
                   </div>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="approach-section" data-depth aria-labelledby="approach-title">
+          <div className="section-container approach-inner">
+            <h2 id="approach-title">
+              Me gusta resolver
+              <br />
+              <em>lo que estorba.</em>
+            </h2>
+            <div className="approach-bottom">
+              <span className="approach-annotation mono">
+                MENOS FRICCIÓN.
+                <br />
+                MÁS CONTROL.
+                <br />
+                MEJOR SOFTWARE.
+              </span>
+              <p>
+                Interfaces que se entienden. Sistemas que responden. Decisiones técnicas que tienen
+                una razón de ser. Así abordo cada proyecto, de principio a fin.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          id="experience"
+          className="experience-section section-container"
+          aria-labelledby="experience-title"
+        >
+          <div className="section-heading">
+            <div>
+              <h2 id="experience-title">
+                Productos propios.
+                <br />
+                <span className="text-muted">Problemas a escala.</span>
+              </h2>
+            </div>
+            <p>
+              La misma atención al detalle, aplicada a operaciones marítimas, logística médica y
+              sistemas empresariales.
+            </p>
+          </div>
+          <div className="experience-list">
+            <article className="experience-row">
+              <span className="mono experience-index">01 /</span>
+              <div>
+                <h3>Akali Marine</h3>
+                <span className="experience-role">Full Stack Web Developer</span>
               </div>
-
-              <div className="project-window">
-                <div className="window-frame">
-                  <div className="window-content">
-                    <Image
-                      src={project.image}
-                      alt={`Interfaz de usuario real de ${project.name}`}
-                      width={1415}
-                      height={996}
-                      sizes="(max-width: 1024px) 100vw, 55vw"
-                      priority={project.number === "01"}
-                      unoptimized
-                    />
-                  </div>
+              <div>
+                <p>
+                  Desarrollo de módulos de compras y operaciones marítimas en Java EE,
+                  microservicios de reportes PDF en Go y aplicaciones internas con Flutter.
+                </p>
+                <div className="experience-contribution">
+                  <span className="mono">CONTRIBUCIÓN</span>
+                  <p>
+                    Conectar interfaces, procesamiento de reportes y despliegues en Azure dentro de
+                    un mismo flujo de trabajo.
+                  </p>
                 </div>
+                <ul className="project-tags">
+                  <li>Java EE</li>
+                  <li>Go</li>
+                  <li>Flutter</li>
+                  <li>MySQL</li>
+                  <li>Azure</li>
+                </ul>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="section-wrapper" id="experience" aria-labelledby="experience-title">
-        <div className="section-head">
-          <span className="mono section-eyebrow">TRAYECTORIA PROFESIONAL</span>
-          <h2 id="experience-title">Del sistema empresarial<br />al producto independiente.</h2>
-          <p>
-            Experiencia comprobada en entornos de alta exigencia, microservicios distribuidos, procesamiento masivo y software corporativo.
-          </p>
-        </div>
-
-        <div className="timeline-list">
-          <article className="timeline-card">
-            <div className="timeline-top">
-              <div className="timeline-company">Akali Marine</div>
-              <div className="timeline-role">Full Stack Web Developer</div>
-            </div>
-            <p className="timeline-desc">
-              Desarrollo de módulos core en Java EE para compras y operaciones marítimas de gran escala, microservicios en Go de alto rendimiento para generación y procesamiento de reportes PDF, aplicaciones internas en Flutter y pipelines de despliegue en Azure.
-            </p>
-            <div className="timeline-stack">
-              <span>JAVA EE</span>
-              <span>GO</span>
-              <span>FLUTTER</span>
-              <span>MYSQL</span>
-              <span>AZURE CLOUD</span>
-              <span>MICROSERVICIOS</span>
-            </div>
-          </article>
-
-          <article className="timeline-card">
-            <div className="timeline-top">
-              <div className="timeline-company">DataCross</div>
-              <div className="timeline-role">Full Stack Web Developer</div>
-            </div>
-            <p className="timeline-desc">
-              Diseño de módulos críticos para la trazabilidad y logística de inventario médico para ISSEA, procesamiento masivo de datos tabulares en Excel y optimización de consultas SQL para operaciones con altos volúmenes de concurrencia.
-            </p>
-            <div className="timeline-stack">
-              <span>JAVA EE</span>
-              <span>ANGULAR</span>
-              <span>MYSQL</span>
-              <span>JASMINE</span>
-              <span>KARMA</span>
-              <span>OPTIMIZACIÓN SQL</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      {/* Capabilities Section */}
-      <section className="section-wrapper" id="capabilities" aria-labelledby="capabilities-title">
-        <div className="section-head">
-          <span className="mono section-eyebrow">STACK &amp; HABILIDADES</span>
-          <h2 id="capabilities-title">Capacidades técnicas.</h2>
-          <p>
-            Un conjunto de herramientas y tecnologías dominadas a través de la práctica en sistemas reales y aplicaciones de escritorio.
-          </p>
-        </div>
-
-        <div className="capabilities-grid">
-          <div className="capability-card">
-            <span className="capability-category">SISTEMAS &amp; ESCRITORIO</span>
-            <div className="capability-tags">
-              <span>Java / Jakarta</span>
-              <span>Go</span>
-              <span>Flutter / Dart</span>
-              <span>FFmpeg &amp; yt-dlp</span>
-              <span>Windows APIs</span>
-            </div>
+            <article className="experience-row">
+              <span className="mono experience-index">02 /</span>
+              <div>
+                <h3>DataCross</h3>
+                <span className="experience-role">Full Stack Web Developer</span>
+              </div>
+              <div>
+                <p>
+                  Desarrollo de módulos de trazabilidad y logística de inventario médico para ISSEA,
+                  procesamiento de archivos Excel y optimización de consultas SQL.
+                </p>
+                <div className="experience-contribution">
+                  <span className="mono">CONTRIBUCIÓN</span>
+                  <p>
+                    Traducir operaciones de inventario en herramientas web y consultas que sostienen
+                    el trabajo diario.
+                  </p>
+                </div>
+                <ul className="project-tags">
+                  <li>Java EE</li>
+                  <li>Angular</li>
+                  <li>MySQL</li>
+                  <li>Jasmine / Karma</li>
+                </ul>
+              </div>
+            </article>
           </div>
-
-          <div className="capability-card">
-            <span className="capability-category">BACKEND &amp; ARQUITECTURA</span>
-            <div className="capability-tags">
-              <span>Microservicios</span>
-              <span>REST &amp; WebSockets</span>
-              <span>MySQL</span>
-              <span>Docker</span>
-              <span>Caché &amp; Workers</span>
+        </section>
+        <section
+          id="capabilities"
+          className="capabilities-section section-container"
+          aria-labelledby="capabilities-title"
+        >
+          <div className="section-heading">
+            <div>
+              <h2 id="capabilities-title">
+                Una visión completa.
+                <br />
+                <span className="text-muted">De extremo a extremo.</span>
+              </h2>
             </div>
-          </div>
-
-          <div className="capability-card">
-            <span className="capability-category">FRONTEND &amp; WEB</span>
-            <div className="capability-tags">
-              <span>React</span>
-              <span>Next.js / Vinext</span>
-              <span>TypeScript</span>
-              <span>Angular</span>
-              <span>Modern CSS</span>
-            </div>
-          </div>
-
-          <div className="capability-card">
-            <span className="capability-category">CLOUD &amp; DEVOPS</span>
-            <div className="capability-tags">
-              <span>Azure</span>
-              <span>Cloudflare Workers</span>
-              <span>CI/CD Pipelines</span>
-              <span>Git Workflows</span>
-              <span>Linux CLI</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer / Contact */}
-      <footer id="contact" aria-labelledby="contact-title">
-        <div className="footer-container">
-          <div className="footer-cta">
-            <span className="mono footer-cta-tag">SIGUIENTE PROYECTO</span>
-            <h2 id="contact-title">¿Qué necesita existir?</h2>
             <p>
-              Disponible para colaborar en productos de software ambiciosos, herramientas nativas, arquitectura de sistemas o consultoría técnica.
+              Elijo las herramientas por el problema que resuelven. Este es el terreno donde
+              trabajo.
             </p>
-            <a className="mail-btn" href="mailto:dpahuas@gmail.com">
-              <Mail />
-              <span>dpahuas@gmail.com</span>
-              <ArrowUpRight />
-            </a>
           </div>
-
-          <div className="footer-bottom">
-            <div className="footer-links">
-              <a href="https://github.com/DiegPS" target="_blank" rel="noreferrer">
-                <GithubIcon />
-                <span>github.com/DiegPS</span>
-              </a>
-              <span className="footer-location">
-                <MapPin />
-                <span>Ciudad de México</span>
-              </span>
-            </div>
-            <span>© 2026 Diego Pahua Silvan — Desarrollado con Vinext sobre Vite</span>
+          <div className="capability-grid">
+            {[
+              {
+                icon: Monitor,
+                number: "01",
+                title: "Escritorio & sistemas",
+                copy: "Aplicaciones nativas con integración real al sistema operativo.",
+                tags: "Flutter · Dart · Windows APIs · FFmpeg",
+              },
+              {
+                icon: Server,
+                number: "02",
+                title: "Backend & datos",
+                copy: "Servicios, procesamiento y almacenamiento con responsabilidades claras.",
+                tags: "Java · Go · REST · WebSockets · SQL",
+              },
+              {
+                icon: Code2,
+                number: "03",
+                title: "Interfaces web",
+                copy: "Experiencias accesibles, adaptables y cuidadas hasta el último estado.",
+                tags: "React · TypeScript · Angular · CSS",
+              },
+              {
+                icon: Layers3,
+                number: "04",
+                title: "Cloud & despliegue",
+                copy: "Del código al entorno donde el producto funciona todos los días.",
+                tags: "Azure · Cloudflare · Docker · CI/CD",
+              },
+            ].map((item) => (
+              <article className="capability" key={item.number}>
+                <div className="capability-top">
+                  <item.icon size={25} strokeWidth={1.5} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+                <span className="capability-stack mono">{item.tags}</span>
+              </article>
+            ))}
           </div>
-        </div>
-      </footer>
-    </main>
+        </section>
+        <section className="build-note section-container">
+          <Terminal size={20} />
+          <p>
+            De una herramienta local a un sistema distribuido.
+            <br />
+            <strong>El objetivo siempre es que funcione mejor para quien lo usa.</strong>
+          </p>
+        </section>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

@@ -1,0 +1,9 @@
+node_modules
+dist
+.next
+.vinext
+.wrangler
+.codex-preview
+package-lock.json
+app/lib/image-manifest.json
+public
